@@ -4,10 +4,11 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 const auth = getAuth(app);
 
 function signup(email, password) {
-    createUserWithEmailAndPassword(auth, "test@gmail.com", "password1234")
+    createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            console.log(user);
             // ...
         })
         .catch((error) => {
@@ -30,5 +31,10 @@ function login(email, password) {
             const errorMessage = error.message;
         });
 
+}
+
+module.exports = {
+    signup,
+    login
 }
 
