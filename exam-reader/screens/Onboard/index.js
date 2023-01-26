@@ -1,5 +1,5 @@
 import { Button } from "react-native";
-export default function OnboardingScreen() {
+function OnboardingScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Onboarding screen</Text>
@@ -8,3 +8,5 @@ export default function OnboardingScreen() {
     </View>
   );
 }
+
+export default OnboardingScreen;
