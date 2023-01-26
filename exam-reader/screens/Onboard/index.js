@@ -5,7 +5,6 @@ function OnboardingScreen() {
   return (
     <View>
       <Text>Onboarding screen</Text>
-      <Button title="Go to register"/>
     </View>
   );
 }
