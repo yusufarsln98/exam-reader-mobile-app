@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Image, View, Text, StyleSheet } from "react-native";
 
-function ForgotPassword() {
+function ForgotPasswordScreen() {
   return (
     <View>
       <Text>Login screen</Text>
@@ -9,4 +9,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default ForgotPasswordScreen;
