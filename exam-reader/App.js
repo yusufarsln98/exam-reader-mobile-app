@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 import OnboardingScreen from './screens/Onboarding';
@@ -16,17 +17,14 @@ import routes from './constants/routes';
 
 export const AppContext = createContext();
 const Stack = createNativeStackNavigator();
-
+const Drawer = createDrawerNavigator();
 
 export default function App() {
+  
   return (
       <AppContext.Provider value={{}}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Onboarding">
-            <Stack.Screen name={routes.ONBOARDING} component={OnboardingScreen} options={{ title: 'Onboarding' }} />
-            <Stack.Screen name={routes.LOGIN} component={LoginScreen} options={{ title: 'Login' }} />
-            <Stack.Screen name={routes.SIGNUP} component={SignUpScreen} options={{ title: 'Sign Up' }} />
-          </Stack.Navigator>
+          <Text>App</Text>
         </NavigationContainer>
       </AppContext.Provider>
   );
