@@ -1,20 +1,11 @@
 export default {
-    app_name: 'OPTİK OKUYUCU',
-    welcome: 'Hoş Geldiniz',
-    slogan: 'Yeni Nesil Optik Okuyucuyu Keşfedin',
-    login: 'Giriş Yap',
-    sign_up: 'Kayıt Ol',
-    or: 'veya',
-    name: 'Ad',
-    surname: 'Soyad',
-    email: 'E-posta',
-    password: 'Şifre',
-    approve: 'Onayla',
-    forgot_password: 'Şifremi Unuttum',
-    enter_email: 'E-posta adresinizi giriniz.',
-    optics: 'Optikler',
-    classes: 'Sınıflar',
-    exams: 'Sınavlar',
-    see_all: 'Hepsini Gör',
-
+    app_name: 'Optik Okuyucu',
+    onboarding: {
+        title: 'OPTİK OKUYUCU',
+        welcome: 'Hoş Geldiniz',
+        slogan: 'Yeni Nesil Optik Okuyucuyu Keşfedin',
+        login: 'Giriş Yap',
+        sign_up: 'Kayıt Ol',
+        or: 'veya',
+    }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createContext } from 'react';
 
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
@@ -37,10 +38,8 @@ export default function App() {
   });
 
   const onLayoutRootView = React.useCallback(async () => {
-    console.log('onLayoutRootView()');
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
-      console.log('SplashScreen.hideAsync()');
     }
   }, [fontsLoaded]);
 
