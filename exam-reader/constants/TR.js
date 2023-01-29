@@ -24,11 +24,11 @@ export default {
         password: 'Şifre',
         fill_required_fields: 'Lütfen tüm alanları doldurunuz.',
         sign_up_failed: 'Kayıt Başarısız.',
-        by_signing_up: 'Kayıt olarak,',
-        terms_of_service: 'kullanım şartlarını',
-        and: 've',
+        by_signing_up: 'Kayıt olarak, ',
+        terms_of_service: 'kullanım şartlarını ',
+        and: 've ',
         privacy_policy: 'gizlilik politikasını',
-        accept: 'okuduğunuzu ve kabul ettiğinizi onaylıyorsunuz.',
+        accept: ' okuduğunuzu ve kabul ettiğinizi onaylıyorsunuz.',
     },
 
 

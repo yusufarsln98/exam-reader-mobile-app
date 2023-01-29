@@ -57,21 +57,22 @@ export const styles = StyleSheet.create({
         width: "100%",
         paddingBottom: 10,
     },
-
     policy: {
+        flexDirection: "row",
         marginTop: 10,
         width: "100%",
         alignItems: "flex-start",
+        
     },
     policyText: {
         color: COLORS.black,
         fontFamily: "Poppins-Regular",
-        fontSize: 14,
+        fontSize: 12,
     },
     policyLink: {
         color: COLORS.blue,
         fontFamily: "Poppins-Regular",
-        fontSize: 14,
+        fontSize: 12,
         textDecorationLine: 'underline',
     },
 });

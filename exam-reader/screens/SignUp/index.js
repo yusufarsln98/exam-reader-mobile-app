@@ -6,6 +6,7 @@ import { COLORS, TR } from "../../constants";
 import { globalStyles } from "../styles";
 import { styles } from "./styles";
 import { IconEye, IconEyeOff, IconLock, IconMail, IconUser } from "../../components/icons";
+import { alert_privacy_policy, alert_terms_of_service } from "./policy";
 
 
 function SignUpScreen() {
@@ -15,7 +16,6 @@ function SignUpScreen() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState("");
-  
 
   const handleSignUp = async () => {
     if (!fullName || !email || !password) {
@@ -24,8 +24,7 @@ function SignUpScreen() {
       return;
     }
     const { name, surname } = fullName.split(" ");
-    console.log(name + " " + surname + " " + email + " " + password);
-    const response = await signup("name", "surname", email, password)
+    const response = await signup(name, surname, email, password)
     if (response) {
       setError(false);
     } else {
@@ -87,11 +86,23 @@ function SignUpScreen() {
             onPress={handleSignUp}
            />
         </View>
-        <View style={styles.forgotPassword}>
-          <Text onPress={() => alert("Not Implemented Yet!")} style={styles.forgotPasswordText}>
-            Şifremi Unuttum
+        <Text style={styles.policy}>
+          <Text style={styles.policyText}>
+            {TR.sign_up.by_signing_up}
           </Text>
-        </View>
+          <Text style={[styles.policyLink, {color: COLORS.blue}]} onPress={alert_privacy_policy}>
+            {TR.sign_up.terms_of_service}
+          </Text>
+          <Text style={styles.policyText}>
+            {TR.sign_up.and}
+          </Text>
+          <Text style={[styles.policyLink, {color: COLORS.blue}]} onPress={alert_terms_of_service}>
+            {TR.sign_up.privacy_policy}
+          </Text>
+          <Text style={styles.policyText}>
+            {TR.sign_up.accept}
+          </Text>
+        </Text>
       </View>
     </SafeAreaView>
   );
