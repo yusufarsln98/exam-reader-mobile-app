@@ -33,7 +33,6 @@ function login(email, password) {
             const user = userCredential.user;
             console.log(db.collection("users").doc(user.uid).get());
             return db.collection("users").doc(user.uid).get();
-
         })
         .catch((error) => {
             const errorCode = error.code;

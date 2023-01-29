@@ -1,6 +1,6 @@
 export default {
     LOGIN: "Login",
-    SIGNUP: "SignUp",
+    SIGN_UP: "SignUp",
     ONBOARDING: "Onboarding",
     HOME: "Home",
     SCHOOL: "School",
