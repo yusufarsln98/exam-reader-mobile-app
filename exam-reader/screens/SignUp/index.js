@@ -78,7 +78,7 @@ function SignUpScreen() {
         </View>
         <View style={styles.button}>
           <Button 
-            title={TR.login.login}
+            title={TR.sign_up.sign_up}
             buttonStyle={globalStyles.buttonPrimary}
             titleStyle={globalStyles.buttonPrimaryTitle}
             onPress={handleSignUp}
