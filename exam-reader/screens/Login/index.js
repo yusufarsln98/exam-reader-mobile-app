@@ -33,15 +33,15 @@ function LoginScreen( { navigation } ) {
     }
 
     const response = await login(email, password);
-    if (response) {
-      setError(false);
+    // if (response) {
+    //   setError(false);
 
-    } else {
-      setError(true);
-      setErrorMessage(TR.login.login_failed);
-      // bu condition hatali olabilir, ne oldugunu kullaniciya goster 
-    }
-    console.log("response " + response);
+    // } else {
+    //   setError(true);
+    //   setErrorMessage(TR.login.login_failed);
+    //   // bu condition hatali olabilir, ne oldugunu kullaniciya goster 
+    // }
+    console.log("response " + response.email);
 
 
     // const dummy = {

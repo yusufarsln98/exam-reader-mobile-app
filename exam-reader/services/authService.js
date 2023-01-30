@@ -27,12 +27,11 @@ function signup(fullName, email, password) {
 }
 
 
-function login(email, password) {
-    signInWithEmailAndPassword(auth, email, password)
+async function login(email, password) {
+    return await signInWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
             const user = userCredential.user;
-            const userDoc = await getDoc(doc(db, "users", user.uid));
-            return userDoc.data();
+            return await getUserData(user.uid);
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -41,6 +40,11 @@ function login(email, password) {
             return errorCode;
         });
 
+}
+
+async function getUserData(uid) {
+    const userDoc = await getDoc(doc(db, "users", uid));
+    return userDoc.data();
 }
 
 module.exports = {
