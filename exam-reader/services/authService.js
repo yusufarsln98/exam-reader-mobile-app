@@ -1,9 +1,11 @@
 import { app } from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase-admin/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const db = getFirestore(app);
 const auth = getAuth(app);
+
 
 function signup(fullName, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
@@ -11,14 +13,13 @@ function signup(fullName, email, password) {
 
             const user = userCredential.user;
 
-            db.collection("users").doc(user.uid).set({
+            setDoc(doc(db, "users", user.uid), {
                 id: user.uid,
                 fullName: fullName,
                 email: user.email,
-                classes: []
-            })
+            });
 
-            return db.collection("users").doc(user.uid).get();
+            return getDoc(doc(db, "users", user.uid));
         })
         .catch((error) => {
             const errorCode = error.code;
