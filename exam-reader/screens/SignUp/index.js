@@ -23,15 +23,13 @@ function SignUpScreen() {
       setErrorMessage(TR.sign_up.fill_required_fields);
       return;
     }
-    const { name, surname } = fullName.split(" ");
-    const response = await signup(name, surname, email, password)
+    const response = await signup(fullName, email, password)
     if (response) {
       setError(false);
     } else {
       setError(true);
       setErrorMessage(TR.sign_up.sign_up_failed);
     }
-    console.log(response);
   };
 
   return (

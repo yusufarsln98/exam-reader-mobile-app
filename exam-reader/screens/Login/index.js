@@ -35,25 +35,26 @@ function LoginScreen( { navigation } ) {
     const response = await login(email, password);
     if (response) {
       setError(false);
-      console.log(response);
 
     } else {
       setError(true);
       setErrorMessage(TR.login.login_failed);
       // bu condition hatali olabilir, ne oldugunu kullaniciya goster 
     }
+    console.log("response " + response);
 
-    const dummy = {
-      "id": 1,
-      "name": "Ahmet",
-      "surname": "Yılmaz",
-      "email": "dummy4@gmail.com",
-    };
+
+    // const dummy = {
+    //   "id": 1,
+    //   "name": "Ahmet",
+    //   "surname": "Yılmaz",
+    //   "email": "dummy4@gmail.com",
+    // };
     // save user to async storage
     // await AsyncStorage.setItem("user", JSON.stringify(dummy));
     // set user data to context
 
-    storeUserData(dummy);
+    // storeUserData(dummy);
     // reset the stack and navigate to home screen
     // navigation.reset({
     //   index: 0,
