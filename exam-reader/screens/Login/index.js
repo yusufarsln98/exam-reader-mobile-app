@@ -55,10 +55,10 @@ function LoginScreen( { navigation } ) {
 
     storeUserData(dummy);
     // reset the stack and navigate to home screen
-    navigation.reset({
-      index: 0,
-      routes: [{ name: ROUTES.HOME, params: { user: dummy } }],
-    });
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{ name: ROUTES.HOME, params: { user: dummy } }],
+    // });
   };
 
   return (
