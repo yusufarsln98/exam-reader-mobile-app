@@ -4,6 +4,7 @@ import { getFirestore } from "firebase-admin/firestore";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 
 function signup(fullName, email, password) {
