@@ -8,7 +8,7 @@ const auth = getAuth(app);
 
 function signup(fullName, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
-        .then(async(userCredential) => {
+        .then(async (userCredential) => {
             const user = userCredential.user;
             setDoc(doc(db, "users", user.uid), {
                 id: user.uid,
@@ -29,15 +29,16 @@ function signup(fullName, email, password) {
 
 function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
             const user = userCredential.user;
-            return db.collection("users").doc(user.uid).get();
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            return userDoc.data();
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log("error catched: ");
             console.log(errorCode, errorMessage);
+            return errorCode;
         });
 
 }
