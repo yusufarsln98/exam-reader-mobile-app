@@ -1,14 +1,16 @@
 import React from "react";
 import { View, Text, SafeAreaView } from "react-native";
 import { Input, Button } from '@rneui/themed';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from "../../services/authService";
-import { COLORS, TR } from "../../constants";
+import { COLORS, TR, ROUTES } from "../../constants";
 import { globalStyles } from "../styles";
 import { styles } from "./styles";
 import { IconEye, IconEyeOff, IconLock, IconMail } from "../../components/icons";
+import { AppContext } from "../../App";
 
 
-function LoginScreen() {
+function LoginScreen( { navigation } ) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
@@ -16,6 +18,8 @@ function LoginScreen() {
   const [error, setError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState("");
 
+  const { storeUserData, userData } = React.useContext(AppContext).value;
+  
   const handleLogin = async () => {
     if (!email) {
       setError(true);
@@ -31,11 +35,30 @@ function LoginScreen() {
     const response = await login(email, password);
     if (response) {
       setError(false);
+      console.log(response);
+
     } else {
       setError(true);
       setErrorMessage(TR.login.login_failed);
+      // bu condition hatali olabilir, ne oldugunu kullaniciya goster 
     }
-    console.log(response);
+
+    const dummy = {
+      "id": 1,
+      "name": "Ahmet",
+      "surname": "Yılmaz",
+      "email": "dummy4@gmail.com",
+    };
+    // save user to async storage
+    // await AsyncStorage.setItem("user", JSON.stringify(dummy));
+    // set user data to context
+
+    storeUserData(dummy);
+    // reset the stack and navigate to home screen
+    navigation.reset({
+      index: 0,
+      routes: [{ name: ROUTES.HOME, params: { user: dummy } }],
+    });
   };
 
   return (
@@ -84,7 +107,10 @@ function LoginScreen() {
            />
         </View>
         <View style={styles.forgotPassword}>
-          <Text onPress={() => alert("Not Implemented Yet!")} style={styles.forgotPasswordText}>
+          <Text 
+            onPress={() => navigation.navigate("ForgotPassword")} 
+            style={styles.forgotPasswordText}
+          >
             Şifremi Unuttum
           </Text>
         </View>

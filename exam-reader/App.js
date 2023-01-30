@@ -18,11 +18,32 @@ import { Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import HomeScreen from './screens/Home';
+
+
 export const AppContext = createContext();
+
 SplashScreen.preventAutoHideAsync();
 
 
 export default function App() {
+  const [userData, setUserData] = React.useState(null);
+
+  React.useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const jsonValue = await AsyncStorage.getItem('user');
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getUserData().then((user) => {
+      setUserData(user);
+    });
+  }, []);
+
   // -------------------- Fonts --------------------
   const [fontsLoaded] = useFonts({
     'Poppins-Light': require('./assets/fonts/Poppins-Light.ttf'),
@@ -47,19 +68,43 @@ export default function App() {
 
   // -------------------- Fonts end --------------------
 
+  const storeUserData = async (user) => {
+    try {
+      await AsyncStorage.setItem('user', JSON.stringify(user));
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const logout = async () => {
+    try {
+      await AsyncStorage.removeItem('user');
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const value = {
     onLayoutRootView,
     dimensions: {
       width,
       height,
     },
+    storeUserData,
+    userData,
+    logout,
   };
+
 
   return (
       <AppContext.Provider value={{value}}>
         <StatusBar style="auto" />
         <NavigationContainer>
-          <OnboardingScreen />
+          {!userData ? (
+            <OnboardingScreen />
+          ) : (
+            <HomeScreen />  
+          )}
         </NavigationContainer>
       </AppContext.Provider>
   );

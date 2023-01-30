@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     },
     logoContainer: {
       position: "relative",
-      top: 0,
+      top: 20,
       left: 0,
       right: 0,
       zIndex: 1,
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
       maxWidth: 400,
       alignItems: "center",
       padding: 20,
-      marginTop: 40,
+      marginTop: 60,
     },
     buttons: {
       width: "100%",

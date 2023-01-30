@@ -3,9 +3,8 @@ import { View, Text } from "react-native";
 import { Button } from '@rneui/themed';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppContext } from "../../App";
-import routes from "../../constants/routes";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { COLORS, TR } from "../../constants";
+import { COLORS, TR, ROUTES } from "../../constants";
 
 import LogoDark from "../../components/icons/LogoDark";
 import { globalStyles } from "../styles";
@@ -13,9 +12,13 @@ import { styles } from "./styles";
 
 import LoginScreen from "../Login";
 import SignUpScreen from "../SignUp";
+import ForgotPasswordScreen from "../ForgotPassword";
+import HomeScreen from "../Home";
 
 function HeaderLogo() {
-  return <LogoDark width={60} height={60} />
+  return (
+        <LogoDark width={60} height={60} />
+  )
 }
 
 function OnboardingScreenComponent( {navigation} ) {
@@ -24,7 +27,7 @@ function OnboardingScreenComponent( {navigation} ) {
   return (
     <SafeAreaView onLayout={appContext.value.onLayoutRootView} style={styles.container}>
       <View style={styles.bgRectangle}></View>
-      <View style={styles.logoContainer}>
+      <View style={[styles.logoContainer]}>
         <LogoDark width={80} height={80} />
         <Text style={[globalStyles.header1, styles.logoText]}>
           {TR.onboarding.title}
@@ -37,14 +40,14 @@ function OnboardingScreenComponent( {navigation} ) {
           <Button
               title={TR.onboarding.login}
               titleColor={COLORS.bgColor}
-              onPress={() => navigation.navigate(routes.LOGIN)}
+              onPress={() => navigation.navigate(ROUTES.LOGIN)}
               buttonStyle={globalStyles.buttonPrimary}
               titleStyle={globalStyles.buttonPrimaryTitle}
           />
           <Button
               title={TR.onboarding.sign_up}
               titleColor={COLORS.primary}
-              onPress={() => navigation.navigate(routes.SIGN_UP)}
+              onPress={() => navigation.navigate(ROUTES.SIGN_UP)}
               buttonStyle={globalStyles.buttonSecondary}
               titleStyle={globalStyles.buttonSecondaryTitle}
           />
@@ -59,7 +62,7 @@ function OnboardingScreen() {
   const Stack = createNativeStackNavigator();
   
   const headerOptions = {
-    headerShown: true, 
+      headerShown: true, 
       headerTitle: HeaderLogo,
       headerTitleAlign: 'center',
       headerTintColor: COLORS.bgColor,
@@ -70,29 +73,39 @@ function OnboardingScreen() {
   }
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={ROUTES.ONBOARDING}>
       <Stack.Screen 
-        name={routes.ONBOARDING} 
+        name={ROUTES.ONBOARDING} 
         component={OnboardingScreenComponent} 
         options={{ headerShown: false }}
       >
       </Stack.Screen>
       <Stack.Screen
-        name={routes.LOGIN}
+        name={ROUTES.LOGIN}
         component={LoginScreen}
         options={headerOptions}
       >
       </Stack.Screen>
       <Stack.Screen
-        name={routes.SIGN_UP}
+        name={ROUTES.SIGN_UP}
         component={SignUpScreen}
         options={headerOptions}
+      >
+      </Stack.Screen>
+      <Stack.Screen
+        name={ROUTES.FORGOT_PASSWORD}
+        component={ForgotPasswordScreen}
+        options={headerOptions}
+      >
+      </Stack.Screen>
+      <Stack.Screen
+        name={ROUTES.HOME}
+        component={HomeScreen}
+        options={{ headerShown: false }}
       >
       </Stack.Screen>
     </Stack.Navigator>
   );
 }
-
-
 
 export default OnboardingScreen;
