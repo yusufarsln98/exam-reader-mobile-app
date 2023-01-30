@@ -5,7 +5,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ROUTES } from "../../constants";
 import { AppContext } from "../../App";
-import LoginScreen from "../Login";
 import OnboardingScreen from "../Onboarding";
 
 function HomeScreenComponent( {navigation} ) {

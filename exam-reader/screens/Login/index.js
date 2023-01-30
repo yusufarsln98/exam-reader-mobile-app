@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, SafeAreaView } from "react-native";
 import { Input, Button } from '@rneui/themed';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from "../../services/authService";
 import { COLORS, TR, ROUTES } from "../../constants";
 import { globalStyles } from "../styles";
 import { styles } from "./styles";
 import { IconEye, IconEyeOff, IconLock, IconMail } from "../../components/icons";
 import { AppContext } from "../../App";
+import { getErrorMessage, isErrorMessage } from "../../utils/utils";
 
 
 function LoginScreen( { navigation } ) {
@@ -33,33 +33,20 @@ function LoginScreen( { navigation } ) {
     }
 
     const response = await login(email, password);
-    // if (response) {
-    //   setError(false);
 
-    // } else {
-    //   setError(true);
-    //   setErrorMessage(TR.login.login_failed);
-    //   // bu condition hatali olabilir, ne oldugunu kullaniciya goster 
-    // }
-    console.log("response " + response.email);
+    if (isErrorMessage(response)) {
+      const message = getErrorMessage(response);
+      setError(true);
+      setErrorMessage(message);
+      return;
+    }
 
+    storeUserData(response);
+    navigation.reset({
+      index: 0,
+      routes: [{ name: ROUTES.HOME, params: { user: response } }],
+    });
 
-    // const dummy = {
-    //   "id": 1,
-    //   "name": "Ahmet",
-    //   "surname": "Yılmaz",
-    //   "email": "dummy4@gmail.com",
-    // };
-    // save user to async storage
-    // await AsyncStorage.setItem("user", JSON.stringify(dummy));
-    // set user data to context
-
-    // storeUserData(dummy);
-    // reset the stack and navigate to home screen
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: ROUTES.HOME, params: { user: dummy } }],
-    // });
   };
 
   return (

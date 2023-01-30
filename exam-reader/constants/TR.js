@@ -23,14 +23,21 @@ export default {
         email: 'E-posta',
         password: 'Şifre',
         fill_required_fields: 'Lütfen tüm alanları doldurunuz.',
-        email_already_exists: 'Bu e-posta adresi zaten kayıtlı.',
-        weak_password: 'Şifreniz en az 6 karakter uzunluğunda olmalıdır.',
-        invalid_email: 'Lütfen geçerli bir e-posta adresi giriniz.',
         by_signing_up: 'Kayıt olarak, ',
         terms_of_service: 'kullanım şartlarını ',
         and: 've ',
         privacy_policy: 'gizlilik politikasını',
         accept: ' okuduğunuzu ve kabul ettiğinizi onaylıyorsunuz.',
+    },
+
+    errors: {
+        email_already_in_use: 'Bu e-posta adresi zaten kayıtlı.',
+        weak_password: 'Şifreniz en az 6 karakter uzunluğunda olmalıdır.',
+        invalid_email: 'Lütfen geçerli bir e-posta adresi giriniz.',
+        operation_not_allowed: 'Bu işlem şu anda gerçekleştirilemiyor.',
+        unknown_error: 'Bilinmeyen bir hata oluştu.',
+        user_not_found: 'Bu e-posta adresi ile kayıtlı bir kullanıcı bulunamadı.',
+        wrong_password: 'Şifreniz hatalı.',
     },
 
 
