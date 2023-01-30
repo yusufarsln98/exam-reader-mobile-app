@@ -5,14 +5,15 @@ import { getFirestore } from "firebase/firestore";
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-function signup(name, surname, email, password) {
+function signup(fullName, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+
             const user = userCredential.user;
+
             db.collection("users").doc(user.uid).set({
                 id: user.uid,
-                name: name,
-                surname: surname,
+                fullName: fullName,
                 email: user.email,
                 classes: []
             })
