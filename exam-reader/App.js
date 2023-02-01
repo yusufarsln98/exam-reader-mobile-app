@@ -33,8 +33,8 @@ export default function App() {
   React.useEffect(() => {
     const getUserData = async () => {
       try {
-        const jsonValue = await AsyncStorage.getItem('user');
-        return jsonValue != null ? JSON.parse(jsonValue) : null;
+        let jsonValue = await AsyncStorage.getItem('user');
+        return jsonValue != null ? JSON.parse(JSON.parse(jsonValue)) : null;
       } catch (e) {
         console.log(e);
       }
@@ -97,7 +97,7 @@ export default function App() {
 
 
   return (
-      <AppContext.Provider value={{value}}>
+      <AppContext.Provider value={value}>
         <StatusBar style="auto" />
         <NavigationContainer>
           {!userData ? (

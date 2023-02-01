@@ -1,5 +1,6 @@
 export default {
     app_name: 'Optik Okuyucu',
+    app_name_upper: 'OPTİK OKUYUCU',
     onboarding: {
         title: 'OPTİK OKUYUCU',
         welcome: 'Hoş Geldiniz!',

@@ -17,8 +17,9 @@ function LoginScreen( { navigation } ) {
 
   const [error, setError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
-  const { storeUserData, userData } = React.useContext(AppContext).value;
+  const { storeUserData } = React.useContext(AppContext);
   
   const handleLogin = async () => {
     if (!email) {
@@ -32,7 +33,9 @@ function LoginScreen( { navigation } ) {
       return;
     }
 
+    setLoading(true);
     const response = await login(email, password);
+    setLoading(false);
 
     if (isErrorMessage(response)) {
       const message = getErrorMessage(response);
@@ -40,11 +43,10 @@ function LoginScreen( { navigation } ) {
       setErrorMessage(message);
       return;
     }
-
     storeUserData(response);
     navigation.reset({
       index: 0,
-      routes: [{ name: ROUTES.HOME, params: { user: response } }],
+      routes: [{ name: ROUTES.HOME }],
     });
 
   };
@@ -62,8 +64,8 @@ function LoginScreen( { navigation } ) {
           <Input
             placeholder="E-posta"
             leftIcon={<IconMail color={COLORS.softBlack}/>}
-            inputContainerStyle={styles.inputContainerStyle}
-            inputStyle={styles.inputStyle}
+            inputContainerStyle={globalStyles.inputContainerStyle}
+            inputStyle={globalStyles.inputStyle}
             keyboardType="email-address"
             autoCapitalize="none"
             onChangeText={setEmail}
@@ -79,8 +81,8 @@ function LoginScreen( { navigation } ) {
                 <IconEye color={COLORS.softBlack} size={20} onPress={() => setShowPassword(true)}/>
               )
             }
-            inputContainerStyle={[styles.inputContainerStyle, {marginTop: -10}]}
-            inputStyle={styles.inputStyle}
+            inputContainerStyle={[globalStyles.inputContainerStyle, {marginTop: -10}]}
+            inputStyle={globalStyles.inputStyle}
             onChangeText={setPassword}
             errorMessage={error ? errorMessage : null}
             errorStyle={{color: COLORS.red, fontFamily: "Poppins-Regular"}}
@@ -92,6 +94,7 @@ function LoginScreen( { navigation } ) {
             buttonStyle={globalStyles.buttonPrimary}
             titleStyle={globalStyles.buttonPrimaryTitle}
             onPress={handleLogin}
+            loading={loading}
            />
         </View>
         <View style={styles.forgotPassword}>

@@ -39,20 +39,6 @@ export const styles = StyleSheet.create({
         width: "105%",
         marginTop: 10,
     },
-    inputContainerStyle: {
-        borderRadius: 5,
-        backgroundColor: COLORS.inputColor,
-        borderColor: COLORS.inputColor,
-        paddingLeft: 10,
-        paddingRight: 10,
-    },
-    inputStyle: {
-        color: COLORS.black,
-        fontFamily: "Poppins-Regular",
-        fontSize: 14,
-        paddingLeft: 10,
-        paddingRight: 10,
-    },
     button: {
         width: "100%",
         paddingBottom: 10,

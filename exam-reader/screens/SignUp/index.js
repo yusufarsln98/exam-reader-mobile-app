@@ -18,7 +18,9 @@ function SignUpScreen( { navigation } ) {
   const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState("");
-  const { storeUserData } = React.useContext(AppContext).value;
+  const [loading, setLoading] = React.useState(false);
+  const { storeUserData } = React.useContext(AppContext);
+
 
   const handleSignUp = async () => {
     if (!fullName || !email || !password) {
@@ -26,7 +28,11 @@ function SignUpScreen( { navigation } ) {
       setErrorMessage(TR.sign_up.fill_required_fields);
       return;
     }
+
+    setLoading(true);
     const response = await signup(fullName, email, password);
+    
+    setLoading(false);
     
     if (response.substring(0, 5) === "auth/") {
       const message = getErrorMessage(response);
@@ -34,11 +40,10 @@ function SignUpScreen( { navigation } ) {
       setErrorMessage(message);
       return;
     }
-
     storeUserData(response);
     navigation.reset({
       index: 0,
-      routes: [{ name: ROUTES.HOME, params: { user: response } }],
+      routes: [{ name: ROUTES.HOME }],
     });
   };
 
@@ -55,15 +60,15 @@ function SignUpScreen( { navigation } ) {
           <Input
             placeholder="Ad Soyad"
             leftIcon={<IconUser color={COLORS.softBlack}/>}
-            inputContainerStyle={styles.inputContainerStyle}
-            inputStyle={styles.inputStyle}
+            inputContainerStyle={globalStyles.inputContainerStyle}
+            inputStyle={globalStyles.inputStyle}
             onChangeText={setFullName}
           />
           <Input
             placeholder="E-posta"
             leftIcon={<IconMail color={COLORS.softBlack}/>}
-            inputContainerStyle={[styles.inputContainerStyle, {marginTop: -10}]}
-            inputStyle={styles.inputStyle}
+            inputContainerStyle={[globalStyles.inputContainerStyle, {marginTop: -10}]}
+            inputStyle={globalStyles.inputStyle}
             keyboardType="email-address"
             autoCapitalize="none"
             onChangeText={setEmail}
@@ -79,8 +84,8 @@ function SignUpScreen( { navigation } ) {
                 <IconEye color={COLORS.softBlack} size={20} onPress={() => setShowPassword(true)}/>
               )
             }
-            inputContainerStyle={[styles.inputContainerStyle, {marginTop: -10}]}
-            inputStyle={styles.inputStyle}
+            inputContainerStyle={[globalStyles.inputContainerStyle, {marginTop: -10}]}
+            inputStyle={globalStyles.inputStyle}
             onChangeText={setPassword}
             errorMessage={error ? errorMessage : null}
             errorStyle={{color: COLORS.red, fontFamily: "Poppins-Regular"}}
@@ -92,7 +97,8 @@ function SignUpScreen( { navigation } ) {
             buttonStyle={globalStyles.buttonPrimary}
             titleStyle={globalStyles.buttonPrimaryTitle}
             onPress={handleSignUp}
-           />
+            loading={loading}
+            />
         </View>
         <Text style={styles.policy}>
           <Text style={styles.policyText}>

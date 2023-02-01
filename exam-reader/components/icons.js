@@ -1,4 +1,4 @@
-import { Feather } from '@expo/vector-icons';
+import { Feather, Entypo } from '@expo/vector-icons';
 import React from 'react';
 
 export const IconMail = (props) => {
@@ -19,4 +19,12 @@ export const IconEyeOff = (props) => {
 
 export const IconUser = (props) => {
     return <Feather name="user" size={24} color="black" {...props} />;
+}
+
+export const IconUsers = (props) => {
+    return <Feather name="users" size={24} color="black" {...props} />;
+}
+
+export const IconExams = (props) => {
+    return <Entypo name="documents" size={24} color="black" {...props} />;
 }

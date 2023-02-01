@@ -30,7 +30,6 @@ export const globalStyles = StyleSheet.create({
         fontSize: 18,
         color: COLORS.black,
     },
-
     paragraph: {
         fontFamily: "Poppins-Light",
         fontSize: 14,
@@ -60,5 +59,19 @@ export const globalStyles = StyleSheet.create({
         fontSize: 16,
         letterSpacing: 0.25,
         fontFamily: 'Poppins-Regular',
+    },
+    inputContainerStyle: {
+        borderRadius: 5,
+        backgroundColor: COLORS.inputColor,
+        borderColor: COLORS.inputColor,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    inputStyle: {
+        color: COLORS.black,
+        fontFamily: "Poppins-Regular",
+        fontSize: 14,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 });
