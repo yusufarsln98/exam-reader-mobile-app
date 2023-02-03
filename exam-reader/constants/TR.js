@@ -30,7 +30,12 @@ export default {
         privacy_policy: 'gizlilik politikasını',
         accept: ' okuduğunuzu ve kabul ettiğinizi onaylıyorsunuz.',
     },
+    about: {
+        about: 'Hakkında',
+        version: 'Versiyon',
+        version_number: '1.0.0',
 
+    },
     errors: {
         email_already_in_use: 'Bu e-posta adresi zaten kayıtlı.',
         weak_password: 'Şifreniz en az 6 karakter uzunluğunda olmalıdır.',
@@ -40,6 +45,33 @@ export default {
         user_not_found: 'Bu e-posta adresi ile kayıtlı bir kullanıcı bulunamadı.',
         wrong_password: 'Şifreniz hatalı.',
     },
-
-
+    home: {
+        home: 'Ana Sayfa',
+        welcome: 'Hoş Geldiniz!',
+        slogan: 'Yeni Nesil Optik Okuyucuyu Keşfedin.',
+        scan: 'Tarama Yap',
+    },
+    classes: {
+        classes: 'Sınıflar',
+        add_class: 'Sınıf Ekle',
+        class_name: 'Sınıf Adı',
+        class_name_required: 'Sınıf adı giriniz.',
+        class_name_already_exists: 'Bu sınıf adı zaten kayıtlı.',
+        class_name_cannot_be_edited: 'Bu sınıf adı değiştirilemez.',
+        class_name_cannot_be_deleted: 'Bu sınıf adı silinemez.',
+        class_name_cannot_be_empty: 'Sınıf adı boş olamaz.',
+    },
+    exams: {
+        exams: 'Sınavlar',
+        add_exam: 'Sınav Ekle',
+        exam_name: 'Sınav Adı',
+        exam_name_required: 'Sınav adı giriniz.',
+        exam_name_already_exists: 'Bu sınav adı zaten kayıtlı.',
+        exam_name_cannot_be_edited: 'Bu sınav adı değiştirilemez.',
+        exam_name_cannot_be_deleted: 'Bu sınav adı silinemez.',
+        exam_name_cannot_be_empty: 'Sınav adı boş olamaz.',
+        exam_date: 'Sınav Tarihi',
+        exam_date_required: 'Sınav tarihi giriniz.',
+        exam_date_cannot_be_edited: 'Bu sınav tarihi değiştirilemez.',
+    },
 }

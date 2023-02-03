@@ -28,3 +28,29 @@ export const IconUsers = (props) => {
 export const IconExams = (props) => {
     return <Entypo name="documents" size={24} color="black" {...props} />;
 }
+
+export const IconMenu = (props) => {
+    return <Feather name="menu" size={24} color="black" {...props} />;
+}
+
+export const IconInfo = (props) => {
+    return <Feather name="info" size={24} color="black" {...props} />;
+}
+
+export const IconExit = (props) => {
+    return <Feather name="log-out" size={24} color="black" {...props} />;
+}
+
+export const IconHome = (props) => {
+    return <Feather name="home" size={24} color="black" {...props} />;
+}
+
+export const IconSettings = (props) => {
+    return <Feather name="settings" size={24} color="black" {...props} />;
+}
+
+export const IconEdit = (props) => {
+    return <Feather name="edit" size={24} color="black" {...props} />;
+}
+
+

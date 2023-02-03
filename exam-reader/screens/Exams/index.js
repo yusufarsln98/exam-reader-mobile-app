@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
-
+import { styles } from './styles';
 
 function ExamsScreen ( {navigation} ) {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View>
           <Text>Classes</Text>
         </View>

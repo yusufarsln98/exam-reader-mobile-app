@@ -3,14 +3,12 @@ import { View, Text, SafeAreaView } from 'react-native';
 import { styles } from './styles';
 
 
-function ClassesScreen ( {navigation} ) {
+function AboutScreen () {
     return (
       <SafeAreaView style={styles.container}>
-        <View>
-          <Text>Classes</Text>
-        </View>
+        <Text>About</Text>
       </SafeAreaView>
     );
 };
 
-export default ClassesScreen;
+export default AboutScreen;
