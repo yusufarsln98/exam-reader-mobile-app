@@ -38,7 +38,20 @@ export const globalStyles = StyleSheet.create({
     paragraph: {
         fontFamily: "Poppins-Light",
         fontSize: 14,
+        color: COLORS.black,
     },
+    paragraphLight: {
+        fontFamily: "Poppins-Light",
+        fontSize: 16,
+        color: COLORS.black,
+    },
+    paragraphBold: {
+        fontFamily: "Poppins-Medium",
+        fontSize: 16,
+        color: COLORS.black,
+    },
+    
+
     buttonPrimary: {
         marginTop: 10,
         backgroundColor: COLORS.primary,

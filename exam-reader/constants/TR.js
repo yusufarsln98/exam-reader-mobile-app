@@ -47,9 +47,14 @@ export default {
     },
     home: {
         home: 'Ana Sayfa',
-        welcome: 'Hoş Geldiniz!',
+        welcome: 'Hoş geldiniz',
         slogan: 'Yeni Nesil Optik Okuyucuyu Keşfedin.',
         scan: 'Tarama Yap',
+        forms: 'Optik Formlar',
+        form1: '26 Soru Optik Form',
+        form2: '60 Soru Optik Form',
+        see_all: 'Hepsini Gör',
+        advertisements: 'Reklamlar',
     },
     classes: {
         classes: 'Sınıflar',

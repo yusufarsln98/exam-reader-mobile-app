@@ -69,7 +69,7 @@ const dummyClasses = [
     exams: [
         {
         id: 1,
-        examName: "Matematik",
+        examName: "Kimya",
         answer_keys: "AABBCECDDEAEAABBCECDDEAEA",
         question_number: 25,
         results: [
@@ -98,7 +98,7 @@ const dummyClasses = [
         },
         {
         id: 2,
-        examName: "Fizik",
+        examName: "Biyoloji",
         answer_keys: "AABBCECDDEAEAABBCECD",
         question_number: 20,
         results: [
@@ -137,12 +137,34 @@ const getClass = (id) => {
     return dummyClasses.find((dummyClass) => dummyClass.id === id);
 }
 
+const getAllExams = () => {
+    let allExams = [];
+    dummyClasses.forEach((dummyClass) => {
+        dummyClass.exams.forEach((exam) => {
+            allExams.push({ ...exam, className: dummyClass.className });
+        });
+    });
+    return allExams;
+}
+
 const getExams = (id) => {
     return dummyClasses.find((dummyClass) => dummyClass.id === id).exams;
 }
 
 const getExam = (id, examId) => {
     return dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId);
+}
+
+const getAllResults = () => {
+    let allResults = [];
+    dummyClasses.forEach((dummyClass) => {
+        dummyClass.exams.forEach((exam) => {
+            exam.results.forEach((result) => {
+                allResults.push(...result);
+            });
+        });
+    });
+    return allResults;
 }
 
 const getResults = (id, examId) => {
@@ -153,4 +175,4 @@ const getResult = (id, examId, resultId) => {
     return dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).results.find((result) => result.id === resultId);
 }
 
-export { getClasses, getClass, getExams, getExam, getResults, getResult };
+export { getClasses, getClass, getExams, getExam, getResults, getResult, getAllExams, getAllResults };

@@ -22,12 +22,6 @@ function LoginScreen( { navigation } ) {
   const { storeUserData } = React.useContext(AppContext);
   
   const handleLogin = async () => {
-    const dummy = {
-      "id": 1,
-      "name": "Leanne Graham",
-      "email": "here"
-    }
-    storeUserData(JSON.stringify(dummy));
     if (!email) {
       setError(true);
       setErrorMessage(TR.login.email_required);
@@ -54,7 +48,6 @@ function LoginScreen( { navigation } ) {
       index: 0,
       routes: [{ name: ROUTES.HOME }],
     });
-
   };
 
   return (
