@@ -25,7 +25,7 @@ function OnboardingScreenComponent( {navigation} ) {
   const appContext = React.useContext(AppContext);
 
   return (
-    <SafeAreaView onLayout={appContext.onLayoutRootView} style={styles.container}>
+    <View onLayout={appContext.onLayoutRootView} style={styles.container}>
       <View style={styles.bgRectangle}></View>
       <View style={[styles.logoContainer]}>
         <LogoDark width={80} height={80} />
@@ -53,7 +53,7 @@ function OnboardingScreenComponent( {navigation} ) {
           />
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

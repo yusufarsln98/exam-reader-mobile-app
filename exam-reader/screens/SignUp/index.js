@@ -40,7 +40,7 @@ function SignUpScreen( { navigation } ) {
       setErrorMessage(message);
       return;
     }
-    storeUserData(response);
+    await storeUserData(response);
     navigation.reset({
       index: 0,
       routes: [{ name: ROUTES.HOME }],
@@ -48,7 +48,7 @@ function SignUpScreen( { navigation } ) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.bgRectangle}></View>
       <View style={styles.header}>
           <Text style={[globalStyles.header]}>
@@ -118,7 +118,7 @@ function SignUpScreen( { navigation } ) {
           </Text>
         </Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

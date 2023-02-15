@@ -17,4 +17,6 @@ export default {
     SETTINGS: "Settings",
     ABOUT: "About",
     CONTACT: "Contact",
+    EDIT_CLASS: "EditClass",
+    ADD_CLASS: "AddClass",
 }

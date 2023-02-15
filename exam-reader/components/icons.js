@@ -1,56 +1,96 @@
-import { Feather, Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 
 export const IconMail = (props) => {
-    return <Feather name="mail" size={24} color="black" {...props} />;
+    return <Ionicons name="mail" size={24} color="black" {...props} />;
 }
 
 export const IconLock = (props) => {
-    return <Feather name="lock" size={24} color="black" {...props} />;
+    return <Ionicons name="key" size={24} color="black" {...props} />;
 }
 
 export const IconEye = (props) => {
-    return <Feather name="eye" size={24} color="black" {...props} />;
+    return <Ionicons name="eye" size={24} color="black" {...props} />;
 }
 
 export const IconEyeOff = (props) => {
-    return <Feather name="eye-off" size={24} color="black" {...props} />;
+    return <Ionicons name="eye-off" size={24} color="black" {...props} />;
 }
 
 export const IconUser = (props) => {
-    return <Feather name="user" size={24} color="black" {...props} />;
+    return <Ionicons name="person" size={24} color="black" {...props} />;
 }
 
-export const IconUsers = (props) => {
-    return <Feather name="users" size={24} color="black" {...props} />;
+export const IconPeople = (props) => {
+    return <Ionicons name="people" size={24} color="black" {...props} />;
 }
 
-export const IconExams = (props) => {
-    return <Entypo name="documents" size={24} color="black" {...props} />;
+export const IconPeopleOutline = (props) => {
+    return <Ionicons name="people-outline" size={24} color="black" {...props} />;
+}
+
+
+export const IconExamsOutline = (props) => {
+    return <Ionicons name="md-newspaper-outline" size={24} color="black" {...props} />;
+}
+
+export const IconExamsSharp = (props) => {
+    return <Ionicons name="md-newspaper-sharp" size={24} color="black" {...props} />;
 }
 
 export const IconMenu = (props) => {
-    return <Feather name="menu" size={24} color="black" {...props} />;
+    return <Ionicons name="menu" size={24} color="black" {...props} />;
 }
 
 export const IconInfo = (props) => {
-    return <Feather name="info" size={24} color="black" {...props} />;
+    return <Ionicons name="ios-information-circle-outline" size={24} color="black" {...props} />;
 }
 
 export const IconExit = (props) => {
-    return <Feather name="log-out" size={24} color="black" {...props} />;
+    return <Ionicons name="log-out" size={24} color="black" {...props} />;
 }
 
 export const IconHome = (props) => {
-    return <Feather name="home" size={24} color="black" {...props} />;
+    return <Ionicons name="home" size={24} color="black" {...props} />;
+}
+
+export const IconHomeOutline = (props) => {
+    return <Ionicons name="home-outline" size={24} color="black" {...props} />;
 }
 
 export const IconSettings = (props) => {
-    return <Feather name="settings" size={24} color="black" {...props} />;
+    return <Ionicons name="settings" size={24} color="black" {...props} />;
+}
+
+export const IconPlus = (props) => {
+    return <Ionicons name="add" size={24} color="black" {...props} />;
+}
+
+export const IconSearch = (props) => {
+    return <Ionicons name="search" size={24} color="black" {...props} />;
 }
 
 export const IconEdit = (props) => {
-    return <Feather name="edit" size={24} color="black" {...props} />;
+    return <Ionicons name="create" size={24} color="black" {...props} />;
 }
 
+export const IconTrash = (props) => {
+    return <Ionicons name="trash" size={24} color="black" {...props} />;
+}
+
+export const IconDownload = (props) => {
+    return <Ionicons name="download" size={24} color="black" {...props} />;
+}
+
+export const IconEllipsisVertical = (props) => {
+    return <Ionicons name="ellipsis-vertical" size={24} color="black" {...props} />;
+}
+
+export const IconClose = (props) => {
+    return <Ionicons name="close" size={24} color="black" {...props} />;
+}
+
+export const IconBack = (props) => {
+    return <Ionicons name="arrow-back" size={24} color="black" {...props} />;
+}
 

@@ -3,6 +3,7 @@ export default {
     mainGray: "#AEB5B9",
     darkGray: "#455560",
     softGray: "#8199A4",
+    paleGray: "#DBDBDB",
     snow: "#E0E8EA",
     bgColor: "#F7F7F7",
     red: "#FF5146",

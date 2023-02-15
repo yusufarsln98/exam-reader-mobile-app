@@ -29,6 +29,13 @@ export const globalStyles = StyleSheet.create({
         fontFamily: "Poppins-Regular",
         fontSize: 18,
         color: COLORS.black,
+        letterSpacing: 0.25,
+    },
+    header2Bold: {
+        fontFamily: "Poppins-Medium",
+        fontSize: 18,
+        color: COLORS.black,
+        letterSpacing: 0.25,
     },
     header3: {
         fontFamily: "Poppins-Regular",
@@ -40,17 +47,11 @@ export const globalStyles = StyleSheet.create({
         fontSize: 14,
         color: COLORS.black,
     },
-    paragraphLight: {
-        fontFamily: "Poppins-Light",
-        fontSize: 16,
-        color: COLORS.black,
-    },
     paragraphBold: {
         fontFamily: "Poppins-Medium",
-        fontSize: 16,
+        fontSize: 14,
         color: COLORS.black,
     },
-    
 
     buttonPrimary: {
         marginTop: 10,

@@ -9,8 +9,8 @@ import { AppContext } from "../App";
 function CostumDrawer(props) {
     const appContext = React.useContext(AppContext);
 
-    const handlePress = () => {
-        appContext.logout();
+    const handlePress = async () => {
+        await appContext.logout();
         props.navigation.reset({
             index: 0,
             routes: [{ name: "Onboarding" }],

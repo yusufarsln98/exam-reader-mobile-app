@@ -43,7 +43,7 @@ function LoginScreen( { navigation } ) {
       setErrorMessage(message);
       return;
     }
-    storeUserData(response);
+    await storeUserData(response);
     navigation.reset({
       index: 0,
       routes: [{ name: ROUTES.HOME }],
@@ -51,7 +51,7 @@ function LoginScreen( { navigation } ) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.bgRectangle}></View>
       <View style={styles.header}>
           <Text style={[globalStyles.header]}>
@@ -105,7 +105,7 @@ function LoginScreen( { navigation } ) {
           </Text>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

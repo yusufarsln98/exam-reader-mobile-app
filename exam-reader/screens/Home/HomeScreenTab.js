@@ -4,9 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS, ROUTES, TR } from "../../constants";
 import ClassesScreen from "../Classes";
 import ExamsScreen from "../Exams";
-import { IconExams, IconHome, IconMenu, IconUsers } from "../../components/icons";
+import { IconExams, IconExamsOutline, IconExamsSharp, IconHome, IconHomeOutline, IconMenu, IconPeople, IconPeopleOutline, IconUsers } from "../../components/icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { HomeScreenComponent } from "./index";
+import { globalStyles } from "../styles";
 
 export function HomeScreenTab({ navigation }) {
   const Tab = createBottomTabNavigator();
@@ -21,11 +22,12 @@ export function HomeScreenTab({ navigation }) {
     headerShown: true,
     headerStyle: {
       backgroundColor: COLORS.bgColor,
+      shadowColor: COLORS.mainGray,
+      elevation: 5,
     },
     headerTintColor: COLORS.primary,
     headerTitleStyle: {
-      fontFamily: "Poppins-Medium",
-      fontSize: 18,
+      ...globalStyles.header2Bold,
       color: COLORS.primary,
     },
     headerTitleAlign: 'center',
@@ -40,18 +42,27 @@ export function HomeScreenTab({ navigation }) {
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === ROUTES.HOME) {
             return <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, top: 4 }}>
-              <IconHome color={color} size={focused ? 28 : 24} />
-              <Text style={{ color: color, fontSize: focused ? 14 : 12, fontFamily: 'Poppins-Regular' }}>{TR.home.home}</Text>
+              {focused ? 
+                <IconHome color={color} size={26} /> :
+                <IconHomeOutline color={color} size={20} />
+              }
+              <Text style={{ color: color, fontSize: focused ? 12 : 10, fontFamily: 'Poppins-Regular' }}>{TR.home.home}</Text>
             </View>;
           } else if (route.name === ROUTES.CLASSES) {
             return <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, top: 4 }}>
-              <IconUsers color={color} size={focused ? 28 : 24} />
-              <Text style={{ color: color, fontSize: focused ? 14 : 12, fontFamily: 'Poppins-Regular' }}>{TR.classes.classes}</Text>
+              {focused ?
+                <IconPeople color={color} size={26} /> :
+                <IconPeopleOutline color={color} size={20} />  
+            }
+              <Text style={{ color: color, fontSize: focused ? 12 : 10, fontFamily: 'Poppins-Regular' }}>{TR.classes.classes}</Text>
             </View>;
           } else {
             return <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, top: 4 }}>
-              <IconExams color={color} size={focused ? 28 : 24} />
-              <Text style={{ color: color, fontSize: focused ? 14 : 12, fontFamily: 'Poppins-Regular' }}>{TR.exams.exams}</Text>
+              {focused ?
+                <IconExamsSharp color={color} size={26} /> :
+                <IconExamsOutline color={color} size={20} />  
+            }
+              <Text style={{ color: color, fontSize: focused ? 12 : 10, fontFamily: 'Poppins-Regular' }}>{TR.exams.exams}</Text>
             </View>;
           }
         },
@@ -60,34 +71,28 @@ export function HomeScreenTab({ navigation }) {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: 'absolute',
-          bottom: 16,
-          left: 10,
-          right: 10,
-          height: 64,
+          bottom: 0,
+          height: 56,
           backgroundColor: COLORS.primary,
-          borderTopWidth: 0,
-          shadowColor: COLORS.primary,
           shadowOffset: {
             width: 0,
             height: 2,
           },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          elevation: 5,
-          borderRadius: 15,
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
         },
+        // hide tab bar on keyboard open
+        tabBarHideOnKeyboard: true,
       })}
-
     >
       <Tab.Screen
         name={ROUTES.CLASSES}
         component={ClassesScreen}
         options={{
-          ...options,
-          headerTitle: TR.classes.classes,
-          headerTitleAlign: 'left',
+          headerShown: false,
           tabBarLabel: TR.classes.classes,
-        }} />
+        }}
+        />
       <Tab.Screen
         name={ROUTES.HOME}
         component={HomeScreenComponent}
@@ -101,9 +106,7 @@ export function HomeScreenTab({ navigation }) {
         name={ROUTES.EXAMS}
         component={ExamsScreen}
         options={{
-          ...options,
-          headerTitle: TR.exams.exams,
-          headerTitleAlign: 'left',
+          headerShown: false,
           tabBarLabel: TR.exams.exams,
         }} />
     </Tab.Navigator>

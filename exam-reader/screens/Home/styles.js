@@ -17,13 +17,15 @@ export const styles = StyleSheet.create({
     itemContainer: {
         backgroundColor: COLORS.snow,
         borderRadius: 8,
-        padding: 16,
         marginBottom: 8,
         marginRight: 8,
+        paddingHorizontal: 16, 
+        paddingVertical: 8,
         height: 100,
         width: 160,
         justifyContent: "center",
         alignItems: "center",
+        overflow: "hidden",
     },
     spacedRow: {
         flexDirection: 'row', 

@@ -1,6 +1,5 @@
-import { StyleSheet } from "react-native";
 import COLORS from "../../constants/colors";
-import { Dimensions } from "react-native";
+import { StyleSheet, Dimensions, StatusBar } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -9,6 +8,7 @@ export const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: COLORS.bgColor,
       alignItems: "center",
+      paddingTop: StatusBar.currentHeight,
     },
     bgRectangle: {
       position: "absolute",
