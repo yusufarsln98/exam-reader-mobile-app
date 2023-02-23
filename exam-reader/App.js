@@ -97,16 +97,16 @@ export default function App() {
 
 
   return (
-      <AppContext.Provider value={value}>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-          {!userData ? (
-            <OnboardingScreen />
-          ) : (
-            <HomeScreen />  
-          )}
-        </NavigationContainer>
-      </AppContext.Provider>
+    <AppContext.Provider value={value}>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        {!userData ? (
+          <OnboardingScreen />
+        ) : (
+          <HomeScreen />
+        )}
+      </NavigationContainer>
+    </AppContext.Provider>
   );
 }
 
