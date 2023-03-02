@@ -1,3 +1,3 @@
 export default {
-    bottom_bar_height: 56,
+  bottom_bar_height: 56,
 };

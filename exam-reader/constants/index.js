@@ -4,4 +4,4 @@ import COLORS from './colors';
 import TR from './TR';
 import DIMENSIONS from './dimensions';
 
-export { ROUTES, IMAGES, COLORS, TR , DIMENSIONS};
+export { ROUTES, IMAGES, COLORS, TR, DIMENSIONS };

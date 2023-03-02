@@ -21,7 +21,7 @@ import AddClassScreen from "../Classes/AddClass";
 const AddItem = ({ navigation, theRoute, height }) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate(theRoute)}>
-      <View style={[styles.itemContainer, {height: height, width: 60, paddingHorizontal: 0, backgroundColor: COLORS.inputColor}]}>
+      <View style={[styles.itemContainer, { height: height, width: 60, paddingHorizontal: 0, backgroundColor: COLORS.inputColor }]}>
         <IconPlus size={36} color={COLORS.softBlack} />
       </View>
     </TouchableOpacity>
@@ -42,14 +42,14 @@ const Forms = () => {
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <TouchableOpacity onPress={downloadForm1}>
         <View style={styles.itemContainer}>
-          <Text style={[globalStyles.paragraph, {textAlign: 'center', textDecorationLine: 'underline'}]}>
+          <Text style={[globalStyles.paragraph, { textAlign: 'center', textDecorationLine: 'underline' }]}>
             {`${TR.home.form1}` + '\n' + `${TR.home.google_drive}`}
           </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={downloadForm2}>
         <View style={styles.itemContainer}>
-          <Text style={[globalStyles.paragraph, {textAlign: 'center', textDecorationLine: 'underline'}]}>
+          <Text style={[globalStyles.paragraph, { textAlign: 'center', textDecorationLine: 'underline' }]}>
             {`${TR.home.form2}` + '\n' + `${TR.home.google_drive}`}
           </Text>
         </View>
@@ -60,10 +60,10 @@ const Forms = () => {
 
 const ClassItem = ({ item, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASS, {theClass: item})}>
-      <View style={[styles.itemContainer, {height: 60}]}>
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASS, { theClass: item })}>
+      <View style={[styles.itemContainer, { height: 60 }]}>
         <Text style={globalStyles.paragraph}>
-          {item.className} 
+          {item.className}
         </Text>
       </View>
     </TouchableOpacity>
@@ -72,13 +72,13 @@ const ClassItem = ({ item, navigation }) => {
 
 const ExamItem = ({ item, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, {theExam: item})}>
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, { theExam: item })}>
       <View style={[styles.itemContainer]}>
         <Text style={globalStyles.paragraph}>
           {item.examName}
         </Text>
         <Text style={globalStyles.paragraph}>
-           {`(${item.className})`}
+          {`(${item.className})`}
         </Text>
       </View>
     </TouchableOpacity>
@@ -86,7 +86,7 @@ const ExamItem = ({ item, navigation }) => {
 };
 
 
-export function HomeScreenComponent( {navigation} ) {
+export function HomeScreenComponent({ navigation }) {
   const appContext = React.useContext(AppContext);
   const { userData } = React.useContext(AppContext);
 
@@ -107,64 +107,63 @@ export function HomeScreenComponent( {navigation} ) {
 
   return (
     <View onLayout={appContext.onLayoutRootView} style={styles.container}>
-        <ScrollView style={styles.contextContainer}>
-          <Text style={[globalStyles.paragraph, {marginTop: 8}]}>
-            {`${userData.fullName}, ${TR.home.welcome} 👋`}
+      <ScrollView style={styles.contextContainer}>
+        <Text style={[globalStyles.paragraph, { marginTop: 8 }]}>
+          {`${userData.fullName}, ${TR.home.welcome} 👋`}
+        </Text>
+        <View style={[styles.horizontalContainer, { marginTop: 16 }]}>
+          <Text style={globalStyles.paragraphBold}>
+            {TR.home.forms}
           </Text>
-          <View style={[styles.horizontalContainer, {marginTop: 16}]}>
+          <Forms />
+        </View>
+
+        <View style={styles.horizontalContainer}>
+          <View style={styles.spacedRow}>
             <Text style={globalStyles.paragraphBold}>
-              {TR.home.forms}
+              {TR.classes.classes}
             </Text>
-            <Forms />
-          </View>
-          
-          <View style={styles.horizontalContainer}>
-            <View style={styles.spacedRow}>
-              <Text style={globalStyles.paragraphBold}>
-                {TR.classes.classes}
+            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASSES)}>
+              <Text style={[globalStyles.paragraph, { fontSize: 12 }]}>
+                {TR.home.see_all}
               </Text>
-              <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASSES)}>
-                <Text style={[globalStyles.paragraph, {fontSize: 12}]}>
-                  {TR.home.see_all}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              {<AddItem theRoute={ROUTES.EXAMS} navigation={navigation} height={60} />}
-              {classes.map((item) => {
-                return <ClassItem key={item.id} item={item} navigation={navigation} />
-              })}
-            </ScrollView>
+            </TouchableOpacity>
           </View>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {<AddItem theRoute={ROUTES.CLASSES} navigation={navigation} height={60} />}
+            {classes.map((item) => {
+              return <ClassItem key={item.id} item={item} navigation={navigation} />
+            })}
+          </ScrollView>
+        </View>
 
-          <View style={styles.horizontalContainer}>
-            <View style={styles.spacedRow}>
-              <Text style={globalStyles.paragraphBold}>
-                {TR.exams.exams}
+        <View style={styles.horizontalContainer}>
+          <View style={styles.spacedRow}>
+            <Text style={globalStyles.paragraphBold}>
+              {TR.exams.exams}
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAMS)}>
+              <Text style={[globalStyles.paragraph, { fontSize: 12 }]}>
+                {TR.home.see_all}
               </Text>
-              <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAMS)}>
-                <Text style={[globalStyles.paragraph, {fontSize: 12}]}>
-                  {TR.home.see_all}
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              {<AddItem theRoute={ROUTES.EXAMS} navigation={navigation} height={100} />}
-              {exams.map((item) => {
-                return <ExamItem key={item.id} item={item} navigation={navigation} />
-              })}
-            </ScrollView>
+            </TouchableOpacity>
           </View>
-          <View style={[styles.horizontalContainer]}>
-            <View style={styles.spacedRow}>
-              <Text style={globalStyles.paragraphBold}>
-                {TR.home.advertisements}
-              </Text>
-            </View>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {<AddItem theRoute={ROUTES.EXAMS} navigation={navigation} height={100} />}
+            {exams.map((item) => {
+              return <ExamItem key={item.id} item={item} navigation={navigation} />
+            })}
+          </ScrollView>
+        </View>
+        <View style={[styles.horizontalContainer]}>
+          <View style={styles.spacedRow}>
+            <Text style={globalStyles.paragraphBold}>
+              {TR.home.advertisements}
+            </Text>
           </View>
-        </ScrollView>
-    </View> 
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -175,30 +174,30 @@ function HomeScreen() {
 
   return (
     <Stack.Navigator initialRouteName={ROUTES.HOME_DRAWER}>
-      <Stack.Screen 
+      <Stack.Screen
         name={ROUTES.HOME_DRAWER}
-        component={HomeScreenDrawer} 
-        options={ {headerShown: false} }
+        component={HomeScreenDrawer}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={ROUTES.ONBOARDING}
         component={OnboardingScreen}
-        options={ {headerShown: false} }
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={ROUTES.CLASS}
         component={ClassScreen}
-        options={ {headerShown: false} }
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={ROUTES.EDIT_CLASS}
         component={EditClassScreen}
-        options={ {headerShown: false} }
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={ROUTES.ADD_CLASS}
         component={AddClassScreen}
-        options={ {headerShown: false} }
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

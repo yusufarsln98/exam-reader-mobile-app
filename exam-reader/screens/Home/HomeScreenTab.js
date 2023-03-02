@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { COLORS, ROUTES, TR } from "../../constants";
+import { COLORS, ROUTES, TR, DIMENSIONS } from "../../constants";
 import ClassesScreen from "../Classes";
 import ExamsScreen from "../Exams";
 import { IconExams, IconExamsOutline, IconExamsSharp, IconHome, IconHomeOutline, IconMenu, IconPeople, IconPeopleOutline, IconUsers } from "../../components/icons";
@@ -42,7 +42,7 @@ export function HomeScreenTab({ navigation }) {
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === ROUTES.HOME) {
             return <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, top: 4 }}>
-              {focused ? 
+              {focused ?
                 <IconHome color={color} size={26} /> :
                 <IconHomeOutline color={color} size={20} />
               }
@@ -52,16 +52,16 @@ export function HomeScreenTab({ navigation }) {
             return <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, top: 4 }}>
               {focused ?
                 <IconPeople color={color} size={26} /> :
-                <IconPeopleOutline color={color} size={20} />  
-            }
+                <IconPeopleOutline color={color} size={20} />
+              }
               <Text style={{ color: color, fontSize: focused ? 12 : 10, fontFamily: 'Poppins-Regular' }}>{TR.classes.classes}</Text>
             </View>;
           } else {
             return <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1, top: 4 }}>
               {focused ?
                 <IconExamsSharp color={color} size={26} /> :
-                <IconExamsOutline color={color} size={20} />  
-            }
+                <IconExamsOutline color={color} size={20} />
+              }
               <Text style={{ color: color, fontSize: focused ? 12 : 10, fontFamily: 'Poppins-Regular' }}>{TR.exams.exams}</Text>
             </View>;
           }
@@ -72,7 +72,7 @@ export function HomeScreenTab({ navigation }) {
         tabBarStyle: {
           position: 'absolute',
           bottom: 0,
-          height: 56,
+          height: DIMENSIONS.bottom_bar_height,
           backgroundColor: COLORS.primary,
           shadowOffset: {
             width: 0,
@@ -92,7 +92,7 @@ export function HomeScreenTab({ navigation }) {
           headerShown: false,
           tabBarLabel: TR.classes.classes,
         }}
-        />
+      />
       <Tab.Screen
         name={ROUTES.HOME}
         component={HomeScreenComponent}

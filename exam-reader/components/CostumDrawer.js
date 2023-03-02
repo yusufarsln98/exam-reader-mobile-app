@@ -7,34 +7,34 @@ import { globalStyles } from "../screens/styles";
 import { AppContext } from "../App";
 
 function CostumDrawer(props) {
-    const appContext = React.useContext(AppContext);
+  const appContext = React.useContext(AppContext);
 
-    const handlePress = async () => {
-        await appContext.logout();
-        props.navigation.reset({
-            index: 0,
-            routes: [{ name: "Onboarding" }],
-        });    
-    };
-    return (
-        <View style={{ flex: 1 }}>
-            <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
-                <DrawerItemList {...props} />
-                <DrawerItem
-                    label="Çıkış Yap"
-                    // Add icon
-                    icon={() => <IconExit color={COLORS.primary} />}
-                    labelStyle={{
-                        ...globalStyles.header3,
-                        color: COLORS.primary,
-                        fontWeight: "bold",
-                    }}
-                    onPress={handlePress}
-                />
-            </DrawerContentScrollView>
-            
-        </View>
-    );
+  const handlePress = async () => {
+    await appContext.logout();
+    props.navigation.reset({
+      index: 0,
+      routes: [{ name: "Onboarding" }],
+    });
+  };
+  return (
+    <View style={{ flex: 1 }}>
+      <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
+        <DrawerItemList {...props} />
+        <DrawerItem
+          label="Çıkış Yap"
+          // Add icon
+          icon={() => <IconExit color={COLORS.primary} />}
+          labelStyle={{
+            ...globalStyles.header3,
+            color: COLORS.primary,
+            fontWeight: "bold",
+          }}
+          onPress={handlePress}
+        />
+      </DrawerContentScrollView>
+
+    </View>
+  );
 }
 
 export default CostumDrawer;
