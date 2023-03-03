@@ -58,9 +58,10 @@ const Forms = () => {
   );
 };
 
+// buraya item yerine id gönder
 const ClassItem = ({ item, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASS, { theClass: item })}>
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASS, { id: item.id })}>
       <View style={[styles.itemContainer, { height: 60 }]}>
         <Text style={globalStyles.paragraph}>
           {item.className}
@@ -72,7 +73,7 @@ const ClassItem = ({ item, navigation }) => {
 
 const ExamItem = ({ item, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, { theExam: item })}>
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, { id: item.id })}>
       <View style={[styles.itemContainer]}>
         <Text style={globalStyles.paragraph}>
           {item.examName}

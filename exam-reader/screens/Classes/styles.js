@@ -1,5 +1,4 @@
 import { StyleSheet, StatusBar } from "react-native";
-import { Animated, Easing } from 'react-native';
 import { COLORS, DIMENSIONS } from "../../constants";
 import { globalStyles } from "../styles";
 
@@ -8,28 +7,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.bgColor,
     marginBottom: DIMENSIONS.bottom_bar_height,
-  },
-  header: {
-    backgroundColor: COLORS.bgColor,
-    paddingTop: StatusBar.currentHeight,
-    paddingHorizontal: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    // borderBottomWidth: 1,
-    borderBottomColor: COLORS.mainGray,
-    shadowColor: COLORS.mainGray,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  headerText: {
-    ...globalStyles.header2Bold,
-    color: COLORS.primary,
   },
   headerIconsContainer: {
     flexDirection: 'row',
@@ -64,14 +41,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     marginTop: 8,
-    shadowColor: COLORS.primary,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
     borderColor: COLORS.paleGray,
     borderBottomWidth: 1,
     justifyContent: 'center',

@@ -67,6 +67,35 @@ let dummyClasses = [
     id: 2,
     className: "CSE343-Software Engineering",
     exams: [
+      {
+        id: 3,
+        examName: "Midterm",
+        answer_keys: "AABBCECDDEAEAABBCECDDEAEA",
+        question_number: 25,
+        results: [
+          {
+            id: 7,
+            studentFullName: "Ahmet Yılmaz",
+            studentNumber: 1234,
+            studentAnswers: "AABBCECDDEAEAABBCECDDEAEC",
+            grade: 96,
+          },
+          {
+            id: 8,
+            studentFullName: "Mehmet Yılmaz",
+            studentNumber: 1235,
+            studentAnswers: "AABBCECDDEAEAABBCECDDEACC",
+            grade: 92,
+          },
+          {
+            id: 9,
+            studentFullName: "Ayşe Yılmaz",
+            studentNumber: 1236,
+            studentAnswers: "AABBDECDDEAEAABBCECDDEACC",
+            grade: 88,
+          },
+        ]
+      },
     ]
   }
 ]

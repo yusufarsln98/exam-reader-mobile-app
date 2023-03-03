@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from 'react';
+import React, { useEffect, useContext, useRef, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Keyboard, Pressable } from 'react-native';
 import { Input } from "@rneui/base";
 import { styles } from './styles';
@@ -15,6 +15,8 @@ import { IconClose, IconEdit, IconEllipsisVertical, IconSearch, IconTrash } from
 import Popover from 'react-native-popover-view';
 import { useState } from 'react';
 import CostumModal from '../../components/CostumModal';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
+
 
 const SearchBar = ({ setIsSearch, setSearchWord }) => {
   const onPressClose = () => {
@@ -74,11 +76,11 @@ const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, 
   const touchable = useRef();
 
   return (
-    <View style={[styles.header, { height: headerHeight }]}>
+    <View style={[globalStyles.headerContainer, { height: headerHeight }]}>
       {isSearch ?
         <SearchBar setIsSearch={setIsSearch} setSearchWord={setSearchWord} /> :
         <>
-          <Text style={styles.headerText}>
+          <Text style={[globalStyles.header2Bold, { color: COLORS.primary }]}>
             {TR.classes.classes_capital}
           </Text>
           <View style={styles.headerIconsContainer}>
@@ -99,7 +101,7 @@ const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, 
 
 const RightSwipeActions = (classId, setClasses, navigation) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_CLASS, { classId })}
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_CLASS, { id: classId })}
       style={[styles.swipeAction, { backgroundColor: COLORS.primary }]}>
       <IconEdit color={COLORS.bgColor} />
     </TouchableOpacity>
@@ -131,31 +133,36 @@ const ListItem = ({ item, navigation, classId, setClasses }) => {
   };
 
   return (
-    <Swipeable
-      renderLeftActions={() => LeftSwipeActions(classId, setClasses, setDeleteItemPressed)}
-      renderRightActions={() => RightSwipeActions(classId, setClasses, navigation)}
+    <TouchableOpacity
+      onLongPress={() => navigation.navigate(ROUTES.EDIT_CLASS, { id: classId })}
+      onPress={() => navigation.navigate(ROUTES.CLASS, { id: classId })}
     >
-      <View style={styles.classItem}>
-        <Text style={globalStyles.header3}>
-          {item.className}
-        </Text>
-        <Text style={[globalStyles.paragraph, { color: COLORS.softBlack, fontSize: 12 }]}>
-          {item.exams.length != 0 ? `${TR.exams.exam_number}: ${item.exams.length}` : `${TR.exams.no_exams}`}
-        </Text>
-      </View>
-      <CostumModal
-        setIsVisible={setDeleteItemPressed}
-        isVisible={deleteItemPressed}
-        title={TR.classes.delete_class}
+      <Swipeable
+        renderLeftActions={() => LeftSwipeActions(classId, setClasses, setDeleteItemPressed)}
+        renderRightActions={() => RightSwipeActions(classId, setClasses, navigation)}
       >
-        <TouchableOpacity onPress={onDeletePressed}>
-          <Text style={[globalStyles.paragraph, { color: COLORS.red }]}>
-            {TR.classes.approve}
+        <View style={styles.classItem}>
+          <Text style={globalStyles.header3}>
+            {item.className}
           </Text>
-        </TouchableOpacity>
-      </CostumModal>
+          <Text style={[globalStyles.paragraph, { color: COLORS.softBlack, fontSize: 12 }]}>
+            {item.exams.length != 0 ? `${TR.exams.exam_number}: ${item.exams.length}` : `${TR.exams.no_exams}`}
+          </Text>
+        </View>
+        <CostumModal
+          setIsVisible={setDeleteItemPressed}
+          isVisible={deleteItemPressed}
+          title={TR.classes.delete_class}
+        >
+          <TouchableOpacity onPress={onDeletePressed}>
+            <Text style={[globalStyles.paragraph, { color: COLORS.red }]}>
+              {TR.classes.approve}
+            </Text>
+          </TouchableOpacity>
+        </CostumModal>
 
-    </Swipeable>
+      </Swipeable>
+    </TouchableOpacity>
   );
 };
 
@@ -167,6 +174,8 @@ function ClassesScreen({ navigation }) {
   const [isSearch, setIsSearch] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const [deleteAllPressed, setDeleteAllPressed] = useState(false);
+  const [randomKey, setRandomKey] = useState(0);
+
 
   // reload page when navigating back to it
   useEffect(() => {
@@ -200,6 +209,14 @@ function ClassesScreen({ navigation }) {
     setDeleteAllPressed(false);
   };
 
+  // Refresh page when navigating back to it
+  useFocusEffect(
+    useCallback(() => {
+      const classes = getClasses();
+      setClasses(classes);
+      setRandomKey(Math.random());
+    }, [])
+  );
 
   return (
     <View onLayout={appContext.onLayoutRootView} style={styles.container}>
@@ -213,7 +230,7 @@ function ClassesScreen({ navigation }) {
         setShowPopover={setShowPopover}
         setDeleteAllPressed={setDeleteAllPressed}
       />
-      <ScrollView style={styles.classList}>
+      <ScrollView style={styles.classList} key={randomKey}>
         {classes.map((item) => (
           <ListItem key={item.id} item={item} navigation={navigation} classId={item.id} setClasses={setClasses} />
         ))}

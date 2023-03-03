@@ -2,19 +2,18 @@ import React from 'react'
 import { Dimensions, Text, View } from 'react-native';
 import Modal from 'react-native-modal'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS } from '../constants';
+import { COLORS, DIMENSIONS } from '../constants';
 import { globalStyles } from "../screens/styles";
 
 
 const CostumModal = ({ isVisible, setIsVisible, title, children }) => {
   // get screen width and height
   const { width, height } = Dimensions.get('window');
-
   return (
     <Modal
       isVisible={isVisible}
       deviceWidth={width}
-      deviceHeight={height + 56}
+      deviceHeight={height + DIMENSIONS.bottom_bar_height}
       onBackdropPress={() => setIsVisible(false)}
       backdropOpacity={0.5}
     >
@@ -31,6 +30,8 @@ const CostumModal = ({ isVisible, setIsVisible, title, children }) => {
     </Modal>
   );
 }
+
+export default CostumModal
 
 const styles = {
   container: {
@@ -61,5 +62,3 @@ const styles = {
     justifyContent: 'space-between',
   },
 };
-
-export default CostumModal

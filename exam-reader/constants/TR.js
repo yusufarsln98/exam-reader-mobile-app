@@ -73,6 +73,7 @@ export default {
     delete_all_warning: 'Geri alınamaz!',
     approve: 'Onayla',
     delete_class: 'Sınıfı Sil',
+    name_should_not_be_empty: 'Sınıf adı boş olamaz.',
   },
   add_class: {
     add_class: 'Sınıf Ekle',

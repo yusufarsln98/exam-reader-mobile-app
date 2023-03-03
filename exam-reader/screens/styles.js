@@ -1,5 +1,5 @@
 // Global style objects
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import COLORS from "../constants/colors";
 
 export const globalStyles = StyleSheet.create({
@@ -14,6 +14,23 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     borderRadius: 10,
+  },
+  headerContainer: {
+    backgroundColor: COLORS.bgColor,
+    paddingTop: StatusBar.currentHeight,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomColor: COLORS.mainGray,
+    shadowColor: COLORS.mainGray,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   header: {
     fontFamily: "Poppins-Medium",
