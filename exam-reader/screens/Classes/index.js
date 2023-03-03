@@ -150,7 +150,6 @@ const ListItem = ({ item, navigation, setClasses, selectedClasses }) => {
     }
   }, [selected]);
 
-
   return (
     <Swipeable
       renderLeftActions={() => LeftSwipeActions(setDeleteItemPressed)}

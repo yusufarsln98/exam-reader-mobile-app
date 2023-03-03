@@ -107,9 +107,9 @@ const Header = ({ setSearchWord, isSearch, setIsSearch, showPopover, setShowPopo
 };
 
 
-const RightSwipeActions = (examId, navigation) => {
+const RightSwipeActions = (item, navigation) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_EXAM, { id: examId })}
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_EXAM, { id: item.id, classId: item.classId })}
       style={[styles.swipeAction, { backgroundColor: COLORS.primary }]}>
       <IconEdit color={COLORS.bgColor} />
     </TouchableOpacity>
@@ -161,12 +161,12 @@ const ListItem = ({ item, navigation, setExams, selectedExams }) => {
   return (
     <Swipeable
       renderLeftActions={() => LeftSwipeActions(setDeleteItemPressed)}
-      renderRightActions={() => RightSwipeActions(item.id, navigation)}
+      renderRightActions={() => RightSwipeActions(item, navigation)}
     >
       <TouchableOpacity
         onLongPress={() => setSelected(!selected)}
         onPress={() =>
-          selectedExams.length != 0 ? setSelected(!selected) : navigation.navigate(ROUTES.EXAM, { id: item.id })
+          selectedExams.length != 0 ? setSelected(!selected) : navigation.navigate(ROUTES.EXAM, { id: item.id, classId: item.classId })
         }
         delayPressIn={50}
       >

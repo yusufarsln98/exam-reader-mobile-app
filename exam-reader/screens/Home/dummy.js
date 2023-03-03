@@ -123,7 +123,7 @@ const getExamsOfClass = (id) => {
 }
 
 const getExam = (id, examId) => {
-  return dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId);
+  return { ...dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId), classId: id };
 }
 
 const getAllResults = () => {

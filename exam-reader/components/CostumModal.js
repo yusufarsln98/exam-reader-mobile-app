@@ -1,7 +1,6 @@
 import React from 'react'
 import { Dimensions, Text, View } from 'react-native';
 import Modal from 'react-native-modal'
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS, DIMENSIONS } from '../constants';
 import { globalStyles } from "../screens/styles";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { getDefaultHeaderHeight } from '@react-navigation/elements';
 import { useSafeAreaFrame, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,7 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import { addClass } from '../Home/dummy';
 import { Input } from '@rneui/base';
 import { globalStyles } from "../styles";
-import { IconCheckmark, IconClose, IconPlusCircle, IconSave } from '../../components/icons';
+import { IconClose, IconPlusCircle } from '../../components/icons';
+import { AppContext } from '../../App';
 
 
 const Header = ({ navigation }) => {
@@ -36,6 +37,7 @@ const Header = ({ navigation }) => {
 function AddClassScreen({ route, navigation }) {
   const [error, setError] = useState(true);
   const [input, setInput] = useState('');
+  const appContext = useContext(AppContext);
 
   useEffect(() => {
     if (input.length === 0) {
@@ -48,7 +50,7 @@ function AddClassScreen({ route, navigation }) {
 
 
   return (
-    <View style={styles.container}>
+    <View onLayout={appContext.onLayoutRootView} style={styles.container}>
       <Header
         navigation={navigation}
       />
