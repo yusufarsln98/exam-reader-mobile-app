@@ -16,6 +16,7 @@ const CostumModal = ({ isVisible, setIsVisible, title, children }) => {
       deviceHeight={height + DIMENSIONS.bottom_bar_height}
       onBackdropPress={() => setIsVisible(false)}
       backdropOpacity={0.5}
+      animationOut="zoomOut"
     >
       <View style={styles.container}>
         <View style={styles.modalContainer}>
