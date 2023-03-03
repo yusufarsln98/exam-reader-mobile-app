@@ -66,6 +66,10 @@ export const IconPlus = (props) => {
   return <Ionicons name="add" size={24} color="black" {...props} />;
 }
 
+export const IconPlusCircle = (props) => {
+  return <Ionicons name="add-circle" size={24} color="black" {...props} />;
+}
+
 export const IconSearch = (props) => {
   return <Ionicons name="search" size={24} color="black" {...props} />;
 }

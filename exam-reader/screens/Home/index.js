@@ -16,6 +16,9 @@ import ClassScreen from "../Classes/Class";
 import { IconPlus } from "../../components/icons";
 import EditClassScreen from "../Classes/EditClass";
 import AddClassScreen from "../Classes/AddClass";
+import ExamScreen from "../Exams/exam";
+import EditExamScreen from "../Exams/EditExam";
+import AddExamScreen from "../Exams/AddExam";
 
 
 const AddItem = ({ navigation, theRoute, height }) => {
@@ -131,7 +134,7 @@ export function HomeScreenComponent({ navigation }) {
             </TouchableOpacity>
           </View>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {<AddItem theRoute={ROUTES.CLASSES} navigation={navigation} height={60} />}
+            {<AddItem theRoute={ROUTES.ADD_CLASS} navigation={navigation} height={60} />}
             {classes.map((item) => {
               return <ClassItem key={item.id} item={item} navigation={navigation} />
             })}
@@ -150,7 +153,7 @@ export function HomeScreenComponent({ navigation }) {
             </TouchableOpacity>
           </View>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {<AddItem theRoute={ROUTES.EXAMS} navigation={navigation} height={100} />}
+            {<AddItem theRoute={ROUTES.ADD_EXAM} navigation={navigation} height={100} />}
             {exams.map((item) => {
               return <ExamItem key={item.id} item={item} navigation={navigation} />
             })}
@@ -198,6 +201,21 @@ function HomeScreen() {
       <Stack.Screen
         name={ROUTES.ADD_CLASS}
         component={AddClassScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={ROUTES.EXAM}
+        component={ExamScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={ROUTES.EDIT_EXAM}
+        component={EditExamScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={ROUTES.ADD_EXAM}
+        component={AddExamScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

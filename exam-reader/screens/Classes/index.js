@@ -42,11 +42,9 @@ const SearchBar = ({ setIsSearch, setSearchWord }) => {
   );
 };
 
-const PopOverMenu = ({ setShowPopover, setClasses, setDeleteAllPressed }) => {
+const PopOverMenu = ({ setShowPopover, setDeleteAllPressed, isClassesSelected }) => {
   const deleteAllPressed = () => {
-    // deleteAllClasses();
     setShowPopover(false);
-    // setClasses(getClasses());
     setDeleteAllPressed(true);
   };
   return (
@@ -55,7 +53,7 @@ const PopOverMenu = ({ setShowPopover, setClasses, setDeleteAllPressed }) => {
         <Text
           style={[globalStyles.paragraph, { color: COLORS.red }]}
         >
-          {TR.classes.delete_all}
+          {isClassesSelected ? TR.classes.delete_selected : TR.classes.delete_all}
         </Text>
       </TouchableOpacity>
       <Text
@@ -67,7 +65,7 @@ const PopOverMenu = ({ setShowPopover, setClasses, setDeleteAllPressed }) => {
   );
 };
 
-const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, showPopover, setShowPopover, setDeleteAllPressed }) => {
+const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, showPopover, setShowPopover, setDeleteAllPressed, isClassesSelected }) => {
   // default header height
   const frame = useSafeAreaFrame();
   const insets = useSafeAreaInsets();
@@ -90,8 +88,18 @@ const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, 
             <TouchableOpacity ref={touchable} onPress={() => setShowPopover(true)}>
               <IconEllipsisVertical color={COLORS.primary} />
             </TouchableOpacity>
-            <Popover from={touchable} isVisible={showPopover} onRequestClose={() => setShowPopover(false)} placement="bottom" popoverStyle={styles.popover}>
-              <PopOverMenu setShowPopover={setShowPopover} setClasses={setClasses} setDeleteAllPressed={setDeleteAllPressed} />
+            <Popover
+              from={touchable}
+              isVisible={showPopover}
+              onRequestClose={() => setShowPopover(false)}
+              placement="bottom"
+              popoverStyle={styles.popover}
+            >
+              <PopOverMenu
+                setShowPopover={setShowPopover}
+                setDeleteAllPressed={setDeleteAllPressed}
+                isClassesSelected={isClassesSelected}
+              />
             </Popover>
           </View>
         </>}
@@ -124,24 +132,40 @@ const LeftSwipeActions = (classId, setClasses, setDeleteItemPressed) => {
   );
 };
 
-const ListItem = ({ item, navigation, classId, setClasses }) => {
+const ListItem = ({ item, navigation, classId, setClasses, selectedClasses }) => {
   const [deleteItemPressed, setDeleteItemPressed] = useState(false);
+  const [selected, setSelected] = useState(false);
   const onDeletePressed = () => {
     deleteClass(classId);
     setClasses(getClasses());
     setDeleteItemPressed(false);
   };
 
+  useEffect(() => {
+    if (selected) {
+      selectedClasses.push(classId);
+    } else {
+      const index = selectedClasses.indexOf(classId);
+      if (index > -1) {
+        selectedClasses.splice(index, 1);
+      }
+    }
+  }, [selected]);
+
+
   return (
     <TouchableOpacity
-      onLongPress={() => navigation.navigate(ROUTES.EDIT_CLASS, { id: classId })}
-      onPress={() => navigation.navigate(ROUTES.CLASS, { id: classId })}
+      onLongPress={() => setSelected(!selected)}
+      onPress={() =>
+        selectedClasses.length != 0 ? setSelected(!selected) : navigation.navigate(ROUTES.CLASS, { id: classId })
+      }
+      delayPressIn={100}
     >
       <Swipeable
         renderLeftActions={() => LeftSwipeActions(classId, setClasses, setDeleteItemPressed)}
         renderRightActions={() => RightSwipeActions(classId, setClasses, navigation)}
       >
-        <View style={styles.classItem}>
+        <View style={[globalStyles.listItem, { backgroundColor: selected ? COLORS.snow : COLORS.bgColor }]}>
           <Text style={globalStyles.header3}>
             {item.className}
           </Text>
@@ -170,6 +194,7 @@ function ClassesScreen({ navigation }) {
   const appContext = useContext(AppContext);
   const { userData } = useContext(AppContext);
   const [classes, setClasses] = useState([]);
+  const [selectedClasses, setSelectedClasses] = useState([]);
   const [searchWord, setSearchWord] = useState('');
   const [isSearch, setIsSearch] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
@@ -199,14 +224,23 @@ function ClassesScreen({ navigation }) {
   }, [searchWord]);
 
   const addButtonPressed = () => {
-    console.log('add button pressed');
     navigation.navigate(ROUTES.ADD_CLASS);
   };
 
   const onDeletePressed = () => {
-    deleteAllClasses();
-    setClasses(getClasses());
-    setDeleteAllPressed(false);
+    if (selectedClasses.length == 0) {
+      deleteAllClasses();
+      setClasses(getClasses());
+      setDeleteAllPressed(false);
+    }
+    else {
+      selectedClasses.forEach((item) => {
+        deleteClass(item);
+      });
+      setClasses(getClasses());
+      setDeleteAllPressed(false);
+      setSelectedClasses([]);
+    }
   };
 
   // Refresh page when navigating back to it
@@ -229,17 +263,25 @@ function ClassesScreen({ navigation }) {
         showPopover={showPopover}
         setShowPopover={setShowPopover}
         setDeleteAllPressed={setDeleteAllPressed}
+        isClassesSelected={selectedClasses.length != 0}
       />
       <ScrollView style={styles.classList} key={randomKey}>
         {classes.map((item) => (
-          <ListItem key={item.id} item={item} navigation={navigation} classId={item.id} setClasses={setClasses} />
+          <ListItem
+            key={item.id}
+            item={item}
+            navigation={navigation}
+            classId={item.id}
+            setClasses={setClasses}
+            selectedClasses={selectedClasses}
+          />
         ))}
       </ScrollView>
       {!isSearch && <AddButton onPress={addButtonPressed} />}
       <CostumModal
         isVisible={deleteAllPressed}
         setIsVisible={setDeleteAllPressed}
-        title={TR.classes.delete_all}
+        title={selectedClasses.length == 0 ? TR.classes.delete_all : TR.classes.delete_selected}
       >
         <TouchableOpacity onPress={onDeletePressed}>
           <Text style={[globalStyles.paragraph, { color: COLORS.red }]}>

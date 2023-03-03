@@ -110,4 +110,14 @@ export const globalStyles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
+  listItem: {
+    backgroundColor: COLORS.bgColor,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginTop: 8,
+    borderColor: COLORS.paleGray,
+    borderBottomWidth: 1,
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
 });

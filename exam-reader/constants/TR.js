@@ -74,6 +74,7 @@ export default {
     approve: 'Onayla',
     delete_class: 'Sınıfı Sil',
     name_should_not_be_empty: 'Sınıf adı boş olamaz.',
+    delete_selected: 'Seçilenleri Sil',
   },
   add_class: {
     add_class: 'Sınıf Ekle',
@@ -102,5 +103,9 @@ export default {
     exam_date_cannot_be_edited: 'Bu sınav tarihi değiştirilemez.',
     exam_number: 'Sınav sayısı',
     no_exams: 'Henüz sınav eklenmemiş.',
+    search: 'Sınav Ara',
+    delete_all: 'Tümünü Sil',
+    delete_all_warning: 'Geri alınamaz!',
+    approve: 'Onayla',
   },
 }

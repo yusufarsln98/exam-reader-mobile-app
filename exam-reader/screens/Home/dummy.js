@@ -205,6 +205,13 @@ const deleteAllClasses = () => {
   dummyClasses = [];
 }
 
+const deleteAllExams = () => {
+  dummyClasses.forEach((dummyClass) => {
+    dummyClass.exams = [];
+  });
+}
+
+
 const deleteExam = (id, examId) => {
   dummyClasses.find((dummyClass) => dummyClass.id === id).exams = dummyClasses.find((dummyClass) => dummyClass.id === id).exams.filter((exam) => exam.id !== examId);
 }
@@ -216,5 +223,5 @@ const deleteResult = (id, examId, resultId) => {
 export {
   getClasses, getClass, getExams, getExam, getResults, getResult, getAllExams, getAllResults,
   addClass, addExam, addResult, addExamAnswerKeys, addExamQuestionNumber, updateClass, updateExam, updateResult,
-  deleteClass, deleteExam, deleteResult, deleteAllClasses
+  deleteClass, deleteExam, deleteResult, deleteAllClasses, deleteAllExams
 };

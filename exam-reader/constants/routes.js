@@ -19,4 +19,6 @@ export default {
   CONTACT: "Contact",
   EDIT_CLASS: "EditClass",
   ADD_CLASS: "AddClass",
+  ADD_EXAM: "AddExam",
+  EDIT_EXAM: "EditExam",
 }

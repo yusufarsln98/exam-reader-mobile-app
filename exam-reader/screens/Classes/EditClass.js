@@ -82,7 +82,7 @@ function EditClassScreen({ route, navigation }) {
             </TouchableOpacity>
           }
           onChangeText={setInput}
-          placeholder={TR.classes.class_name_cannot_be_empty}
+          placeholder={TR.edit_class.class_name_required}
           placeholderTextColor={COLORS.paleGray}
         >
           <Text style={globalStyles.header3}>

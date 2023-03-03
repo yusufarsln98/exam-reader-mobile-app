@@ -36,21 +36,6 @@ export const styles = StyleSheet.create({
     ...globalStyles.panel,
     padding: 16,
   },
-  classItem: {
-    backgroundColor: COLORS.bgColor,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginTop: 8,
-    borderColor: COLORS.paleGray,
-    borderBottomWidth: 1,
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-  classItemText: {
-    fontSize: 18,
-    color: COLORS.black,
-    fontFamily: 'Poppins-Regular',
-  },
   swipeAction: {
     backgroundColor: COLORS.bgColor,
     justifyContent: 'center',
