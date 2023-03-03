@@ -60,7 +60,6 @@ export default {
   },
   classes: {
     classes: 'Sınıflar',
-    classes_capital: 'SINIFLAR',
     add_class: 'Sınıf Ekle',
     class_name: 'Sınıf Adı',
     class_name_required: 'Sınıf adı giriniz.',
@@ -90,7 +89,6 @@ export default {
   },
   exams: {
     exams: 'Sınavlar',
-    exams_capital: 'SINAVLAR',
     add_exam: 'Sınav Ekle',
     exam_name: 'Sınav Adı',
     exam_name_required: 'Sınav adı giriniz.',
@@ -107,5 +105,7 @@ export default {
     delete_all: 'Tümünü Sil',
     delete_all_warning: 'Geri alınamaz!',
     approve: 'Onayla',
+    delete_exam: 'Sınavı Sil',
+    delete_selected: 'Seçilenleri Sil',
   },
 }

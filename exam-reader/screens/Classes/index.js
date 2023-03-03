@@ -65,7 +65,7 @@ const PopOverMenu = ({ setShowPopover, setDeleteAllPressed, isClassesSelected })
   );
 };
 
-const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, showPopover, setShowPopover, setDeleteAllPressed, isClassesSelected }) => {
+const Header = ({ setSearchWord, isSearch, setIsSearch, showPopover, setShowPopover, setDeleteAllPressed, isClassesSelected }) => {
   // default header height
   const frame = useSafeAreaFrame();
   const insets = useSafeAreaInsets();
@@ -79,7 +79,7 @@ const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, 
         <SearchBar setIsSearch={setIsSearch} setSearchWord={setSearchWord} /> :
         <>
           <Text style={[globalStyles.header2Bold, { color: COLORS.primary }]}>
-            {TR.classes.classes_capital}
+            {TR.classes.classes.toUpperCase()}
           </Text>
           <View style={styles.headerIconsContainer}>
             <TouchableOpacity onPress={() => setIsSearch(true)}>
@@ -107,7 +107,7 @@ const Header = ({ setSearchWord, setClasses, isSearch, setIsSearch, navigation, 
   );
 };
 
-const RightSwipeActions = (classId, setClasses, navigation) => {
+const RightSwipeActions = (classId, navigation) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_CLASS, { id: classId })}
       style={[styles.swipeAction, { backgroundColor: COLORS.primary }]}>
@@ -117,7 +117,7 @@ const RightSwipeActions = (classId, setClasses, navigation) => {
   );
 };
 
-const LeftSwipeActions = (classId, setClasses, setDeleteItemPressed) => {
+const LeftSwipeActions = (setDeleteItemPressed) => {
   const deletePressed = () => {
     setDeleteItemPressed(true);
   };
@@ -132,38 +132,36 @@ const LeftSwipeActions = (classId, setClasses, setDeleteItemPressed) => {
   );
 };
 
-const ListItem = ({ item, navigation, classId, setClasses, selectedClasses }) => {
+const ListItem = ({ item, navigation, setClasses, selectedClasses }) => {
   const [deleteItemPressed, setDeleteItemPressed] = useState(false);
   const [selected, setSelected] = useState(false);
   const onDeletePressed = () => {
-    deleteClass(classId);
+    deleteClass(item.id);
     setClasses(getClasses());
     setDeleteItemPressed(false);
   };
 
   useEffect(() => {
     if (selected) {
-      selectedClasses.push(classId);
+      selectedClasses.push(item.id);
     } else {
-      const index = selectedClasses.indexOf(classId);
-      if (index > -1) {
-        selectedClasses.splice(index, 1);
-      }
+      const index = selectedClasses.indexOf(item.id);
+      selectedClasses.splice(index, 1);
     }
   }, [selected]);
 
 
   return (
-    <TouchableOpacity
-      onLongPress={() => setSelected(!selected)}
-      onPress={() =>
-        selectedClasses.length != 0 ? setSelected(!selected) : navigation.navigate(ROUTES.CLASS, { id: classId })
-      }
-      delayPressIn={100}
+    <Swipeable
+      renderLeftActions={() => LeftSwipeActions(setDeleteItemPressed)}
+      renderRightActions={() => RightSwipeActions(item.id, navigation)}
     >
-      <Swipeable
-        renderLeftActions={() => LeftSwipeActions(classId, setClasses, setDeleteItemPressed)}
-        renderRightActions={() => RightSwipeActions(classId, setClasses, navigation)}
+      <TouchableOpacity
+        onLongPress={() => setSelected(!selected)}
+        onPress={() =>
+          selectedClasses.length != 0 ? setSelected(!selected) : navigation.navigate(ROUTES.CLASS, { id: item.id })
+        }
+        delayPressIn={50}
       >
         <View style={[globalStyles.listItem, { backgroundColor: selected ? COLORS.snow : COLORS.bgColor }]}>
           <Text style={globalStyles.header3}>
@@ -173,20 +171,19 @@ const ListItem = ({ item, navigation, classId, setClasses, selectedClasses }) =>
             {item.exams.length != 0 ? `${TR.exams.exam_number}: ${item.exams.length}` : `${TR.exams.no_exams}`}
           </Text>
         </View>
-        <CostumModal
-          setIsVisible={setDeleteItemPressed}
-          isVisible={deleteItemPressed}
-          title={TR.classes.delete_class}
-        >
-          <TouchableOpacity onPress={onDeletePressed}>
-            <Text style={[globalStyles.paragraph, { color: COLORS.red }]}>
-              {TR.classes.approve}
-            </Text>
-          </TouchableOpacity>
-        </CostumModal>
-
-      </Swipeable>
-    </TouchableOpacity>
+      </TouchableOpacity>
+      <CostumModal
+        setIsVisible={setDeleteItemPressed}
+        isVisible={deleteItemPressed}
+        title={TR.classes.delete_class}
+      >
+        <TouchableOpacity onPress={onDeletePressed}>
+          <Text style={[globalStyles.paragraph, { color: COLORS.red }]}>
+            {TR.classes.approve}
+          </Text>
+        </TouchableOpacity>
+      </CostumModal>
+    </Swipeable>
   );
 };
 
@@ -200,15 +197,6 @@ function ClassesScreen({ navigation }) {
   const [showPopover, setShowPopover] = useState(false);
   const [deleteAllPressed, setDeleteAllPressed] = useState(false);
   const [randomKey, setRandomKey] = useState(0);
-
-
-  // reload page when navigating back to it
-  useEffect(() => {
-    navigation.addListener('focus', () => {
-      const classes = getClasses();
-      setClasses(classes);
-    });
-  }, [navigation]);
 
   // search
   useEffect(() => {
@@ -257,7 +245,6 @@ function ClassesScreen({ navigation }) {
       <Header
         navigation={navigation}
         setSearchWord={setSearchWord}
-        setClasses={setClasses}
         isSearch={isSearch}
         setIsSearch={setIsSearch}
         showPopover={showPopover}
@@ -265,8 +252,8 @@ function ClassesScreen({ navigation }) {
         setDeleteAllPressed={setDeleteAllPressed}
         isClassesSelected={selectedClasses.length != 0}
       />
-      <ScrollView style={styles.classList} key={randomKey}>
-        {classes.map((item) => (
+      <ScrollView key={randomKey}>
+        {classes?.map((item) => (
           <ListItem
             key={item.id}
             item={item}

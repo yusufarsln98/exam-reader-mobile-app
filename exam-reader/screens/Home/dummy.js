@@ -108,17 +108,17 @@ const getClass = (id) => {
   return dummyClasses.find((dummyClass) => dummyClass.id === id);
 }
 
-const getAllExams = () => {
+const getExams = () => {
   let allExams = [];
   dummyClasses.forEach((dummyClass) => {
     dummyClass.exams.forEach((exam) => {
-      allExams.push({ ...exam, className: dummyClass.className });
+      allExams.push({ ...exam, classId: dummyClass.id });
     });
   });
   return allExams;
 }
 
-const getExams = (id) => {
+const getExamsOfClass = (id) => {
   return dummyClasses.find((dummyClass) => dummyClass.id === id).exams;
 }
 
@@ -221,7 +221,7 @@ const deleteResult = (id, examId, resultId) => {
 }
 
 export {
-  getClasses, getClass, getExams, getExam, getResults, getResult, getAllExams, getAllResults,
+  getClasses, getClass, getExams, getExam, getResults, getResult, getExamsOfClass, getAllResults,
   addClass, addExam, addResult, addExamAnswerKeys, addExamQuestionNumber, updateClass, updateExam, updateResult,
   deleteClass, deleteExam, deleteResult, deleteAllClasses, deleteAllExams
 };

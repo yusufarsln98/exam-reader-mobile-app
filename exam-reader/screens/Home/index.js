@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Button } from '@rneui/themed';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { COLORS, ROUTES, TR } from "../../constants";
 import { AppContext } from "../../App";
 import OnboardingScreen from "../Onboarding";
-import { getClasses, getClass, getAllExams, getExam, getResults, getResult } from "./dummy";
+import { getClasses, getClass, getExams, getExam, getResults, getResult } from "./dummy";
 import { styles } from "./styles";
 import { globalStyles } from "../styles";
 import { HomeScreenDrawer } from "./HomeScreenDrawer";
@@ -75,6 +75,12 @@ const ClassItem = ({ item, navigation }) => {
 };
 
 const ExamItem = ({ item, navigation }) => {
+  const [classData, setClassData] = useState({});
+  useEffect(() => {
+    const classData = getClass(item.classId);
+    setClassData(classData);
+  }, []);
+
   return (
     <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, { id: item.id })}>
       <View style={[styles.itemContainer]}>
@@ -82,7 +88,7 @@ const ExamItem = ({ item, navigation }) => {
           {item.examName}
         </Text>
         <Text style={globalStyles.paragraph}>
-          {`(${item.className})`}
+          {`(${classData.className})`}
         </Text>
       </View>
     </TouchableOpacity>
@@ -91,20 +97,20 @@ const ExamItem = ({ item, navigation }) => {
 
 
 export function HomeScreenComponent({ navigation }) {
-  const appContext = React.useContext(AppContext);
-  const { userData } = React.useContext(AppContext);
+  const appContext = useContext(AppContext);
+  const { userData } = useContext(AppContext);
 
-  const [classes, setClasses] = React.useState([]);
-  const [exams, setExams] = React.useState([]);
-  const [results, setResults] = React.useState([]);
+  const [classes, setClasses] = useState([]);
+  const [exams, setExams] = useState([]);
+  const [results, setResults] = useState([]);
 
 
   // reload page when navigating back to it
-  React.useEffect(() => {
+  useEffect(() => {
     navigation.addListener('focus', () => {
       const classes = getClasses();
       setClasses(classes);
-      const exams = getAllExams();
+      const exams = getExams();
       setExams(exams);
     });
   }, [navigation]);
