@@ -107,5 +107,7 @@ export default {
     approve: 'Onayla',
     delete_exam: 'Sınavı Sil',
     delete_selected: 'Seçilenleri Sil',
+    exam: 'Sınav',
+    results: 'Sonuçlar',
   },
 }

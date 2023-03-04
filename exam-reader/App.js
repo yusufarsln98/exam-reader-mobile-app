@@ -1,23 +1,16 @@
 import * as React from 'react';
 import { createContext } from 'react';
-
 import { StatusBar } from 'expo-status-bar';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import OnboardingScreen from './screens/Onboarding';
 import LoginScreen from './screens/Login';
 import SignUpScreen from './screens/SignUp';
-
 import routes from './constants/routes';
 import TR from './constants/TR';
-
 import { Dimensions } from 'react-native';
-
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './screens/Home';
 

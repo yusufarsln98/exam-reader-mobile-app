@@ -82,7 +82,7 @@ const ExamItem = ({ item, navigation }) => {
   }, []);
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, { id: item.id })}>
+    <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAM, { id: item.id, classId: item.classId })}>
       <View style={[styles.itemContainer]}>
         <Text style={globalStyles.paragraph}>
           {item.examName}

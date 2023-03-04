@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal'
 import { COLORS, DIMENSIONS } from '../constants';
 import { globalStyles } from "../screens/styles";
@@ -16,6 +16,10 @@ const CostumModal = ({ isVisible, setIsVisible, title, children }) => {
       onBackdropPress={() => setIsVisible(false)}
       backdropOpacity={0.5}
       animationOut="zoomOut"
+      backdropTransitionInTiming={1000}
+      backdropTransitionOutTiming={1000}
+      animationInTiming={400}
+      animationOutTiming={400}
     >
       <View style={styles.container}>
         <View style={styles.modalContainer}>
@@ -33,7 +37,8 @@ const CostumModal = ({ isVisible, setIsVisible, title, children }) => {
 
 export default CostumModal
 
-const styles = {
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -61,4 +66,4 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-};
+});

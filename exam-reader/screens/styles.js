@@ -59,6 +59,11 @@ export const globalStyles = StyleSheet.create({
     fontSize: 16,
     color: COLORS.black,
   },
+  header3Bold: {
+    fontFamily: "Poppins-Medium",
+    fontSize: 16,
+    color: COLORS.black,
+  },
   paragraph: {
     fontFamily: "Poppins-Light",
     fontSize: 14,
