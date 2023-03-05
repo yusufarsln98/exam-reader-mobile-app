@@ -16,9 +16,9 @@ import ClassScreen from "../Classes/Class";
 import { IconPlus } from "../../components/icons";
 import EditClassScreen from "../Classes/EditClass";
 import AddClassScreen from "../Classes/AddClass";
-import ExamScreen from "../Exams/exam";
 import EditExamScreen from "../Exams/EditExam";
 import AddExamScreen from "../Exams/AddExam";
+import ExamScreen from "../Exams/Exam";
 
 
 const AddItem = ({ navigation, theRoute, height }) => {
@@ -134,7 +134,7 @@ export function HomeScreenComponent({ navigation }) {
               {TR.classes.classes}
             </Text>
             <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CLASSES)}>
-              <Text style={[globalStyles.paragraph, { fontSize: 12 }]}>
+              <Text style={[globalStyles.paragraphSmall]}>
                 {TR.home.see_all}
               </Text>
             </TouchableOpacity>
@@ -153,7 +153,7 @@ export function HomeScreenComponent({ navigation }) {
               {TR.exams.exams}
             </Text>
             <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EXAMS)}>
-              <Text style={[globalStyles.paragraph, { fontSize: 12 }]}>
+              <Text style={[globalStyles.paragraphSmall]}>
                 {TR.home.see_all}
               </Text>
             </TouchableOpacity>

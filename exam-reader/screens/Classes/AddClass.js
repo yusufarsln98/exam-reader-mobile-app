@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { addClass } from '../Home/dummy';
 import { Input } from '@rneui/base';
 import { globalStyles } from "../styles";
-import { IconClose, IconPlusCircle } from '../../components/icons';
+import { IconBack, IconClose, IconPlusCircle } from '../../components/icons';
 import { AppContext } from '../../App';
 
 
@@ -19,35 +19,24 @@ const Header = ({ navigation }) => {
 
   return (
     <View style={[globalStyles.headerContainer, { height: headerHeight }]}>
+      <TouchableOpacity onPress={() => {
+        navigation.pop();
+      }}>
+        <IconBack color={COLORS.primary} />
+      </TouchableOpacity>
       <View style={styles.headerTextArea}>
         <Text style={[globalStyles.header2Bold, { color: COLORS.primary }]}>
           {TR.add_class.add_class}
         </Text>
       </View>
-      <TouchableOpacity onPress={() => {
-        navigation.pop();
-      }}>
-        <IconClose color={COLORS.primary} />
-      </TouchableOpacity>
     </View>
   );
 };
 
 
 function AddClassScreen({ route, navigation }) {
-  const [error, setError] = useState(true);
   const [input, setInput] = useState('');
   const appContext = useContext(AppContext);
-
-  useEffect(() => {
-    if (input.length === 0) {
-      setError(true);
-    }
-    else {
-      setError(false);
-    }
-  }, [input]);
-
 
   return (
     <View onLayout={appContext.onLayoutRootView} style={styles.container}>
@@ -56,7 +45,7 @@ function AddClassScreen({ route, navigation }) {
       />
       <View style={[styles.inputItem]}>
         <Text style={[globalStyles.paragraph, { color: COLORS.softBlack, marginLeft: 8 }]}>
-          {TR.edit_class.class_name}
+          {TR.add_class.class_name}
         </Text>
         <Input
           autoFocus={true}
@@ -64,13 +53,13 @@ function AddClassScreen({ route, navigation }) {
           style={styles.input}
           rightIcon={
             <TouchableOpacity onPress={() => {
-              if (!error) {
+              if (input.length > 0) {
                 addClass(input);
                 navigation.pop();
               }
             }}>
               <IconPlusCircle
-                color={error ? COLORS.paleGray : COLORS.primary}
+                color={input.length === 0 ? COLORS.paleGray : COLORS.primary}
               />
             </TouchableOpacity>
           }
@@ -94,6 +83,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
+    justifyContent: 'center',
+    marginRight: 24,
   },
   inputItem: {
     paddingVertical: 8,
@@ -119,7 +110,6 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 0,
-    borderColor: COLORS.red,
     marginRight: 24,
   },
 });

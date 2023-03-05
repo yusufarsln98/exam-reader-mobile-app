@@ -36,11 +36,4 @@ export const styles = StyleSheet.create({
     ...globalStyles.panel,
     padding: 16,
   },
-  swipeAction: {
-    backgroundColor: COLORS.bgColor,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    paddingHorizontal: 16,
-    marginTop: 8,
-  },
 });

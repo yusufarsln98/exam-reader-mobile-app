@@ -4,8 +4,8 @@ import { COLORS, DIMENSIONS } from '../constants';
 import { globalStyles } from "../screens/styles";
 import BottomSheet from '@gorhom/bottom-sheet';
 
-const BottomModal = ({ children, index }) => {
-  const snapPoints = useMemo(() => ['3%', '30%'], []);
+const BottomModal = ({ children, index, setIndex }) => {
+  const snapPoints = useMemo(() => [1, '20'], []);
   const bottomSheetRef = useRef(null);
 
   return (
@@ -16,6 +16,9 @@ const BottomModal = ({ children, index }) => {
       style={{ backgroundColor: 'transparent' }}
       backgroundStyle={{ backgroundColor: COLORS.primary }}
       handleIndicatorStyle={{ backgroundColor: COLORS.bgColor, width: 50 }}
+      onChange={index => {
+        setIndex(index);
+      }}
     >
       {children}
     </BottomSheet >

@@ -110,7 +110,7 @@ const Header = ({ setSearchWord, isSearch, setIsSearch, showPopover, setShowPopo
 const RightSwipeActions = (classId, navigation) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_CLASS, { id: classId })}
-      style={[styles.swipeAction, { backgroundColor: COLORS.primary }]}>
+      style={[globalStyles.swipeAction, { backgroundColor: COLORS.primary }]}>
       <IconEdit color={COLORS.bgColor} />
     </TouchableOpacity>
 
@@ -123,7 +123,7 @@ const LeftSwipeActions = (setDeleteItemPressed) => {
   };
   return (
     <View
-      style={[styles.swipeAction, { backgroundColor: COLORS.red }]}
+      style={[globalStyles.swipeAction, { backgroundColor: COLORS.red }]}
     >
       <TouchableOpacity onPress={deletePressed}>
         <IconTrash color={COLORS.bgColor} />
@@ -154,6 +154,7 @@ const ListItem = ({ item, navigation, setClasses, selectedClasses }) => {
     <Swipeable
       renderLeftActions={() => LeftSwipeActions(setDeleteItemPressed)}
       renderRightActions={() => RightSwipeActions(item.id, navigation)}
+      containerStyle={{ backgroundColor: COLORS.snow }}
     >
       <TouchableOpacity
         onLongPress={() => setSelected(!selected)}
@@ -251,7 +252,9 @@ function ClassesScreen({ navigation }) {
         setDeleteAllPressed={setDeleteAllPressed}
         isClassesSelected={selectedClasses.length != 0}
       />
-      <ScrollView key={randomKey}>
+      <ScrollView key={randomKey}
+        style={globalStyles.listContainer}
+      >
         {classes?.map((item) => (
           <ListItem
             key={item.id}

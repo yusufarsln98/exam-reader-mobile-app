@@ -9,7 +9,7 @@ export default {
   red: "#FF5146",
   green: "#89AB92",
   blue: "#4F80E1",
-  black: "#222222",
+  black: "#252525",
   softBlack: "#666666",
   inputColor: "#E1E1E1",
 }

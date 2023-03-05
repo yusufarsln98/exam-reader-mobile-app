@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import * as React from 'react';
 import { createContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
@@ -13,6 +14,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './screens/Home';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 export const AppContext = createContext();
@@ -91,14 +93,16 @@ export default function App() {
 
   return (
     <AppContext.Provider value={value}>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        {!userData ? (
-          <OnboardingScreen />
-        ) : (
-          <HomeScreen />
-        )}
-      </NavigationContainer>
+      <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+          {!userData ? (
+            <OnboardingScreen />
+          ) : (
+            <HomeScreen />
+          )}
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </AppContext.Provider>
   );
 }

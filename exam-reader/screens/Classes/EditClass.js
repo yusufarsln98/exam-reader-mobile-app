@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { getClass, updateClass } from '../Home/dummy';
 import { Input } from '@rneui/base';
 import { globalStyles } from "../styles";
-import { IconCheckmark, IconClose, IconSave } from '../../components/icons';
+import { IconBack, IconCheckmark, IconClose, IconSave } from '../../components/icons';
 import { AppContext } from '../../App';
 
 
@@ -19,19 +19,16 @@ const Header = ({ classData, navigation }) => {
 
   return (
     <View style={[globalStyles.headerContainer, { height: headerHeight }]}>
+      <TouchableOpacity onPress={() => {
+        navigation.pop();
+      }}>
+        <IconBack color={COLORS.primary} />
+      </TouchableOpacity>
       <View style={styles.headerTextArea}>
         <Text style={[globalStyles.header2Bold, { color: COLORS.primary }]}>
           {TR.edit_class.edit_class}
         </Text>
-        <Text style={[globalStyles.paragraph, { color: COLORS.primary }]}>
-          {classData && ` (${classData.className})`}
-        </Text>
       </View>
-      <TouchableOpacity onPress={() => {
-        navigation.pop();
-      }}>
-        <IconClose color={COLORS.primary} />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -105,6 +102,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
+    justifyContent: 'center',
+    marginRight: 24,
   },
   inputItem: {
     paddingVertical: 8,

@@ -15,6 +15,16 @@ export const globalStyles = StyleSheet.create({
     elevation: 5,
     borderRadius: 10,
   },
+  shadow: {
+    shadowColor: COLORS.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
   headerContainer: {
     backgroundColor: COLORS.bgColor,
     paddingTop: StatusBar.currentHeight,
@@ -74,12 +84,15 @@ export const globalStyles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.black,
   },
-
+  paragraphSmall: {
+    fontFamily: "Poppins-Light",
+    fontSize: 12,
+    color: COLORS.black,
+  },
   buttonPrimary: {
     marginTop: 10,
     backgroundColor: COLORS.primary,
     borderColor: COLORS.primary,
-    borderWidth: 2,
     borderRadius: 5,
   },
   buttonPrimaryTitle: {
@@ -119,10 +132,18 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: COLORS.bgColor,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    marginTop: 8,
     borderColor: COLORS.paleGray,
     borderBottomWidth: 1,
+    marginBottom: 2,
+  },
+  swipeAction: {
+    backgroundColor: COLORS.bgColor,
     justifyContent: 'center',
-    flexDirection: 'column',
+    alignItems: 'flex-end',
+    paddingHorizontal: 16,
+    marginBottom: 2,
+  },
+  listContainer: {
+    marginTop: 4,
   },
 });

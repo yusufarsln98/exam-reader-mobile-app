@@ -6,8 +6,8 @@ let dummyClasses = [
       {
         id: 1,
         examName: "Matematik",
-        answer_keys: "AABBCECDDEAEAABBCECDDEAEA",
-        question_number: 25,
+        answerKey: "AABBCECDDEAEAABBCECDDEAEA",
+        questionNumber: 25,
         results: [
           {
             id: 1,
@@ -35,8 +35,8 @@ let dummyClasses = [
       {
         id: 2,
         examName: "Fizik",
-        answer_keys: "AABBCECDDEAEAABBCECD",
-        question_number: 20,
+        answerKey: "AABBCECDDEAEAABBCECD",
+        questionNumber: 20,
         results: [
           {
             id: 4,
@@ -70,8 +70,8 @@ let dummyClasses = [
       {
         id: 3,
         examName: "Midterm",
-        answer_keys: "AABBCECDDEAEAABBCECDDEAEA",
-        question_number: 25,
+        answerKey: "AABBCECDDEAEAABBCECDDEAEA",
+        questionNumber: 25,
         results: [
           {
             id: 7,
@@ -154,12 +154,12 @@ const addClass = (className) => {
   });
 }
 
-const addExam = (id, examName, answer_keys, question_number) => {
+const addExam = (id, examName, answerKey, questionNumber) => {
   dummyClasses.find((dummyClass) => dummyClass.id === id).exams.push({
     id: dummyClasses.find((dummyClass) => dummyClass.id === id).exams.length + 1,
     examName: examName,
-    answer_keys: answer_keys,
-    question_number: question_number,
+    answerKey: answerKey,
+    questionNumber: questionNumber,
     results: []
   });
 }
@@ -174,12 +174,12 @@ const addResult = (id, examId, studentFullName, studentNumber, studentAnswers, g
   });
 }
 
-const addExamAnswerKeys = (id, examId, answer_keys) => {
-  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).answer_keys = answer_keys;
+const addExamanswerKey = (id, examId, answerKey) => {
+  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).answerKey = answerKey;
 }
 
-const addExamQuestionNumber = (id, examId, question_number) => {
-  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).question_number = question_number;
+const addExamQuestionNumber = (id, examId, questionNumber) => {
+  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).questionNumber = questionNumber;
 }
 
 const updateClass = (id, className) => {
@@ -211,9 +211,12 @@ const deleteAllExams = () => {
   });
 }
 
-
 const deleteExam = (id, examId) => {
   dummyClasses.find((dummyClass) => dummyClass.id === id).exams = dummyClasses.find((dummyClass) => dummyClass.id === id).exams.filter((exam) => exam.id !== examId);
+}
+
+const deleteResults = (id, examId) => {
+  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).results = [];
 }
 
 const deleteResult = (id, examId, resultId) => {
@@ -222,6 +225,6 @@ const deleteResult = (id, examId, resultId) => {
 
 export {
   getClasses, getClass, getExams, getExam, getResults, getResult, getExamsOfClass, getAllResults,
-  addClass, addExam, addResult, addExamAnswerKeys, addExamQuestionNumber, updateClass, updateExam, updateResult,
-  deleteClass, deleteExam, deleteResult, deleteAllClasses, deleteAllExams
+  addClass, addExam, addResult, addExamanswerKey, addExamQuestionNumber, updateClass, updateExam, updateResult,
+  deleteClass, deleteExam, deleteResult, deleteAllClasses, deleteAllExams, deleteResults
 };

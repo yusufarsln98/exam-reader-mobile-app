@@ -13,8 +13,7 @@ import { deleteAllExams, deleteExam, getClass, getExams } from '../Home/dummy';
 import { useFocusEffect } from '@react-navigation/native';
 import CostumModal from '../../components/CostumModal';
 import AddButton from '../../components/AddButton';
-import { ScrollView } from 'react-native-gesture-handler';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { ScrollView, Swipeable } from 'react-native-gesture-handler';
 
 
 const SearchBar = ({ setIsSearch, setSearchWord }) => {
@@ -110,7 +109,7 @@ const Header = ({ setSearchWord, isSearch, setIsSearch, showPopover, setShowPopo
 const RightSwipeActions = (item, navigation) => {
   return (
     <TouchableOpacity onPress={() => navigation.navigate(ROUTES.EDIT_EXAM, { id: item.id, classId: item.classId })}
-      style={[styles.swipeAction, { backgroundColor: COLORS.primary }]}>
+      style={[globalStyles.swipeAction, { backgroundColor: COLORS.primary }]}>
       <IconEdit color={COLORS.bgColor} />
     </TouchableOpacity>
 
@@ -123,7 +122,7 @@ const LeftSwipeActions = (setDeleteItemPressed) => {
   };
   return (
     <View
-      style={[styles.swipeAction, { backgroundColor: COLORS.red }]}
+      style={[globalStyles.swipeAction, { backgroundColor: COLORS.red }]}
     >
       <TouchableOpacity onPress={deletePressed}>
         <IconTrash color={COLORS.bgColor} />
@@ -162,6 +161,7 @@ const ListItem = ({ item, navigation, setExams, selectedExams }) => {
     <Swipeable
       renderLeftActions={() => LeftSwipeActions(setDeleteItemPressed)}
       renderRightActions={() => RightSwipeActions(item, navigation)}
+      containerStyle={{ backgroundColor: COLORS.snow }}
     >
       <TouchableOpacity
         onLongPress={() => setSelected(!selected)}
@@ -260,7 +260,9 @@ function ExamsScreen({ navigation }) {
         setDeleteAllPressed={setDeleteAllPressed}
         isExamsSelected={selectedExams.length != 0}
       />
-      <ScrollView key={randomKey}>
+      <ScrollView key={randomKey}
+        style={globalStyles.listContainer}
+      >
         {exams?.map((item) => (
           <ListItem
             key={item.id}

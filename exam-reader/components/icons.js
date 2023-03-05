@@ -106,5 +106,8 @@ export const IconCheckmark = (props) => {
   return <Ionicons name="checkmark" size={24} color="black" {...props} />;
 }
 
+export const IconChevronDown = (props) => {
+  return <Ionicons name="chevron-down" size={24} color="black" {...props} />;
+}
 
 

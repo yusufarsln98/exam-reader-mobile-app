@@ -89,6 +89,7 @@ export default {
   },
   exams: {
     exams: 'Sınavlar',
+    exam: 'Sınav',
     add_exam: 'Sınav Ekle',
     exam_name: 'Sınav Adı',
     exam_name_required: 'Sınav adı giriniz.',
@@ -109,5 +110,27 @@ export default {
     delete_selected: 'Seçilenleri Sil',
     exam: 'Sınav',
     results: 'Sonuçlar',
+    export: 'Dışa Aktar',
+    number: 'No',
+    answers: 'Cevaplar',
+    delete_result: 'Sonucu Sil',
+    class: 'Sınıf',
+    answer_key: 'Cevap Anahtarı',
   },
-}
+  add_exam: {
+    add_exam: 'Sınav Ekle',
+    exam_name: 'Sınav Adı',
+    exam_name_required: 'Sınav adı boş olamaz.',
+    exam_name_already_exists: 'Bu sınav adı zaten kayıtlı.',
+    answer_key: 'Cevap Anahtarı',
+    answer_key_required: 'Cevap anahtarı boş olamaz.',
+    question_count: 'Soru Sayısı',
+    question_count_required: 'Soru sayısı boş olamaz.',
+    exam_name_example: 'Ör: Fizik Sınavı',
+    answer_key_example: 'Ör: ACCABDDEBAAACBDDECEE',
+    question_count_example: 'Ör: 20',
+    add: 'Ekle',
+    select_class: 'Sınıf Seç',
+    no_classes: 'Henüz sınıf eklenmemiş.',
+  }
+};

@@ -51,11 +51,4 @@ export const styles = StyleSheet.create({
     color: COLORS.black,
     fontFamily: 'Poppins-Regular',
   },
-  swipeAction: {
-    backgroundColor: COLORS.bgColor,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    paddingHorizontal: 16,
-    marginTop: 8,
-  },
 });
