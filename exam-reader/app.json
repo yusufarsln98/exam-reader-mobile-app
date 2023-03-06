@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "exam-reader",
+    "slug": "exam-reader",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo-light.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f7f7f7"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo-dark.png",
+        "backgroundColor": "#f7f7f7"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "backgroundColor": "#f7f7f7"
+  }
+}
