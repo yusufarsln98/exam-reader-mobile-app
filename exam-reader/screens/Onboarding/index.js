@@ -17,11 +17,11 @@ import HomeScreen from "../Home";
 
 function HeaderLogo() {
   return (
-        <LogoDark width={60} height={60} />
+    <LogoDark width={60} height={60} />
   )
 }
 
-function OnboardingScreenComponent( {navigation} ) {
+function OnboardingScreenComponent({ navigation }) {
   const appContext = React.useContext(AppContext);
 
   return (
@@ -38,18 +38,18 @@ function OnboardingScreenComponent( {navigation} ) {
         <Text style={globalStyles.paragraph}>{TR.onboarding.slogan}</Text>
         <View style={styles.buttons}>
           <Button
-              title={TR.onboarding.login}
-              titleColor={COLORS.bgColor}
-              onPress={() => navigation.navigate(ROUTES.LOGIN)}
-              buttonStyle={globalStyles.buttonPrimary}
-              titleStyle={globalStyles.buttonPrimaryTitle}
+            title={TR.onboarding.login}
+            titleColor={COLORS.bgColor}
+            onPress={() => navigation.navigate(ROUTES.LOGIN)}
+            buttonStyle={globalStyles.buttonPrimary}
+            titleStyle={globalStyles.buttonPrimaryTitle}
           />
           <Button
-              title={TR.onboarding.sign_up}
-              titleColor={COLORS.primary}
-              onPress={() => navigation.navigate(ROUTES.SIGN_UP)}
-              buttonStyle={globalStyles.buttonSecondary}
-              titleStyle={globalStyles.buttonSecondaryTitle}
+            title={TR.onboarding.sign_up}
+            titleColor={COLORS.primary}
+            onPress={() => navigation.navigate(ROUTES.SIGN_UP)}
+            buttonStyle={globalStyles.buttonSecondary}
+            titleStyle={globalStyles.buttonSecondaryTitle}
           />
         </View>
       </View>
@@ -60,23 +60,23 @@ function OnboardingScreenComponent( {navigation} ) {
 // Stack navigator
 function OnboardingScreen() {
   const Stack = createNativeStackNavigator();
-  
+
   const headerOptions = {
-      headerShown: true, 
-      headerTitle: HeaderLogo,
-      headerTitleAlign: 'center',
-      headerTintColor: COLORS.bgColor,
-      headerShadowVisible: false,
-      headerStyle: {
-        backgroundColor: COLORS.primary,
-      }
+    headerShown: true,
+    headerTitle: HeaderLogo,
+    headerTitleAlign: 'center',
+    headerTintColor: COLORS.bgColor,
+    headerShadowVisible: false,
+    headerStyle: {
+      backgroundColor: COLORS.primary,
+    }
   }
 
   return (
     <Stack.Navigator initialRouteName={ROUTES.ONBOARDING}>
-      <Stack.Screen 
-        name={ROUTES.ONBOARDING} 
-        component={OnboardingScreenComponent} 
+      <Stack.Screen
+        name={ROUTES.ONBOARDING}
+        component={OnboardingScreenComponent}
         options={{ headerShown: false }}
       >
       </Stack.Screen>
