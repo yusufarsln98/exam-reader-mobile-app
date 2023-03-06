@@ -4,7 +4,7 @@ import { AppContext } from '../../../App';
 import { styles } from './styles';
 import { getDefaultHeaderHeight } from '@react-navigation/elements';
 import { useSafeAreaFrame, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { COLORS, TR } from '../../../constants';
+import { COLORS, ROUTES, TR } from '../../../constants';
 import { globalStyles } from '../../styles';
 import { IconClose, IconDownload, IconEdit, IconEye, IconEyeOff, IconTrash, IconBack } from '../../../components/icons';
 import { deleteResult, getClass, getExam } from '../../Home/dummy';
@@ -45,6 +45,11 @@ const Header = ({ navigation, examData, setModalIndex, modalIndex }) => {
             :
             <IconEyeOff color={COLORS.primary} />
           }
+        </TouchableOpacity>
+        <TouchableOpacity style={{ marginLeft: 12 }} onPress={() => {
+          navigation.navigate(ROUTES.EDIT_EXAM, { id: examData.id, classId: examData.classId });
+        }}>
+          <IconEdit color={COLORS.primary} />
         </TouchableOpacity>
       </View>
     </View>
@@ -232,46 +237,58 @@ function ExamScreen({ navigation, route }) {
         </TouchableOpacity>
       </CostumModal>
       <BottomModal index={modalIndex} setIndex={setModalIndex}>
-        <View style={styles.modalContainer}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={[globalStyles.header3, { color: COLORS.inputColor }]}
-            >
-              {`${TR.exams.class}: `}
-            </Text>
-            <Text
-              style={[globalStyles.header2, { color: COLORS.bgColor }]}
-            >
-              {getClass(examData?.classId)?.className}
-            </Text>
-          </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={[globalStyles.header3, { color: COLORS.inputColor }]}
-            >
-              {`${TR.exams.exam}: `}
-            </Text>
-            <Text
-              style={[globalStyles.header2, { color: COLORS.bgColor }]}
-            >
-              {`${examData?.examName}`}
-            </Text>
-          </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text
-              style={[globalStyles.header3, { color: COLORS.inputColor }]}
-            >
-              {`${TR.exams.answer_key}: `}
-            </Text>
-            <ScrollView horizontal={true} style={{ width: '100%' }}>
+        <ScrollView>
+          <View style={styles.modalContainer}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text
+                style={[globalStyles.header3, { color: COLORS.inputColor }]}
+              >
+                {`${TR.exams.class}: `}
+              </Text>
               <Text
                 style={[globalStyles.header2, { color: COLORS.bgColor }]}
               >
-                {`${examData?.answerKey}`}
+                {getClass(examData?.classId)?.className}
               </Text>
-            </ScrollView>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text
+                style={[globalStyles.header3, { color: COLORS.inputColor }]}
+              >
+                {`${TR.exams.exam}: `}
+              </Text>
+              <Text
+                style={[globalStyles.header2, { color: COLORS.bgColor }]}
+              >
+                {`${examData?.examName}`}
+              </Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text
+                style={[globalStyles.header3, { color: COLORS.inputColor }]}
+              >
+                {`${TR.exams.answer_key}: `}
+              </Text>
+              <ScrollView horizontal={true} style={{ width: '100%' }}>
+                <Text
+                  style={[globalStyles.header2, { color: COLORS.bgColor }]}
+                >
+                  {`${examData?.answerKey}`}
+                </Text>
+              </ScrollView>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text
+                style={[globalStyles.header3, { color: COLORS.inputColor }]}
+              >
+                {`${TR.exams.question_count}: `}
+              </Text>
+              <Text style={[globalStyles.header2, { color: COLORS.bgColor }]}>
+                {`${examData?.questionNumber}`}
+              </Text>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </BottomModal>
     </View>
   );

@@ -65,7 +65,7 @@ let dummyClasses = [
   },
   {
     id: 2,
-    className: "CSE343-Software Engineering",
+    className: "CSE343 - Software",
     exams: [
       {
         id: 3,
@@ -119,7 +119,8 @@ const getExams = () => {
 }
 
 const getExamsOfClass = (id) => {
-  return dummyClasses.find((dummyClass) => dummyClass.id === id).exams;
+  let exams = dummyClasses.find((dummyClass) => dummyClass.id === id).exams;
+  return exams.map((exam) => { return { ...exam, classId: id } });
 }
 
 const getExam = (id, examId) => {
@@ -186,8 +187,15 @@ const updateClass = (id, className) => {
   dummyClasses.find((dummyClass) => dummyClass.id === id).className = className;
 }
 
-const updateExam = (id, examId, examName) => {
-  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId).examName = examName;
+const updateExam = (id, examId, examName, answerKey, questionNumber) => {
+  let exam = dummyClasses.find((dummyClass) => dummyClass.id === id).exams.find((exam) => exam.id === examId);
+  // remove exam from dummyClasses
+  dummyClasses.find((dummyClass) => dummyClass.id === id).exams = dummyClasses.find((dummyClass) => dummyClass.id === id).exams.filter((exam) => exam.id !== examId);
+  // add exam to dummyClasses
+  exam.examName = examName;
+  exam.answerKey = answerKey;
+  exam.questionNumber = questionNumber;
+  dummyClasses.find((dummyClass) => dummyClass.id === id).exams.push(exam);
 }
 
 const updateResult = (id, examId, resultId, studentFullName, studentNumber, studentAnswers, grade) => {
@@ -211,6 +219,10 @@ const deleteAllExams = () => {
   });
 }
 
+const deleteExamsOfClass = (id) => {
+  dummyClasses.find((dummyClass) => dummyClass.id === id).exams = [];
+}
+
 const deleteExam = (id, examId) => {
   dummyClasses.find((dummyClass) => dummyClass.id === id).exams = dummyClasses.find((dummyClass) => dummyClass.id === id).exams.filter((exam) => exam.id !== examId);
 }
@@ -226,5 +238,5 @@ const deleteResult = (id, examId, resultId) => {
 export {
   getClasses, getClass, getExams, getExam, getResults, getResult, getExamsOfClass, getAllResults,
   addClass, addExam, addResult, addExamanswerKey, addExamQuestionNumber, updateClass, updateExam, updateResult,
-  deleteClass, deleteExam, deleteResult, deleteAllClasses, deleteAllExams, deleteResults
+  deleteClass, deleteExam, deleteResult, deleteAllClasses, deleteAllExams, deleteResults, deleteExamsOfClass
 };

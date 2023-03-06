@@ -74,6 +74,8 @@ export default {
     delete_class: 'Sınıfı Sil',
     name_should_not_be_empty: 'Sınıf adı boş olamaz.',
     delete_selected: 'Seçilenleri Sil',
+    class: 'Sınıf',
+    exams: 'Sınavlar',
   },
   add_class: {
     add_class: 'Sınıf Ekle',
@@ -116,6 +118,7 @@ export default {
     delete_result: 'Sonucu Sil',
     class: 'Sınıf',
     answer_key: 'Cevap Anahtarı',
+    question_count: 'Soru Sayısı',
   },
   add_exam: {
     add_exam: 'Sınav Ekle',
@@ -132,5 +135,21 @@ export default {
     add: 'Ekle',
     select_class: 'Sınıf Seç',
     no_classes: 'Henüz sınıf eklenmemiş.',
-  }
+  },
+  edit_exam: {
+    edit_exam: 'Sınavı Düzenle',
+    exam_name: 'Sınav Adı',
+    exam_name_required: 'Sınav adı boş olamaz.',
+    exam_name_already_exists: 'Bu sınav adı zaten kayıtlı.',
+    answer_key: 'Cevap Anahtarı',
+    answer_key_required: 'Cevap anahtarı boş olamaz.',
+    question_count: 'Soru Sayısı',
+    question_count_required: 'Soru sayısı boş olamaz.',
+    exam_name_example: 'Ör: Fizik Sınavı',
+    answer_key_example: 'Ör: ACCABDDEBAAACBDDECEE',
+    question_count_example: 'Ör: 20',
+    save: 'Kaydet',
+    select_class: 'Sınıf Seç',
+    no_classes: 'Henüz sınıf eklenmemiş.',
+  },
 };

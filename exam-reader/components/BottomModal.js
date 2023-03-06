@@ -5,7 +5,7 @@ import { globalStyles } from "../screens/styles";
 import BottomSheet from '@gorhom/bottom-sheet';
 
 const BottomModal = ({ children, index, setIndex }) => {
-  const snapPoints = useMemo(() => [1, '20'], []);
+  const snapPoints = useMemo(() => [1, '24'], []);
   const bottomSheetRef = useRef(null);
 
   return (
