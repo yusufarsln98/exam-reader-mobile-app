@@ -98,7 +98,7 @@ const ExamItem = ({ item, navigation }) => {
 
 export function HomeScreenComponent({ navigation }) {
   const appContext = useContext(AppContext);
-  const { userData } = useContext(AppContext);
+  // const { userData } = useContext(AppContext);
 
   const [classes, setClasses] = useState([]);
   const [exams, setExams] = useState([]);
@@ -119,7 +119,8 @@ export function HomeScreenComponent({ navigation }) {
     <View onLayout={appContext.onLayoutRootView} style={styles.container}>
       <ScrollView style={styles.contextContainer}>
         <Text style={[globalStyles.paragraph, { marginTop: 8 }]}>
-          {`${userData.fullName}, ${TR.home.welcome} 👋`}
+          {/* {`${userData.fullName}, ${TR.home.welcome} 👋`} */}
+          {`${TR.home.welcome} 👋`}
         </Text>
         <View style={[styles.horizontalContainer, { marginTop: 16 }]}>
           <Text style={globalStyles.paragraphBold}>

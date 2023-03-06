@@ -24,11 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-dark.png",
         "backgroundColor": "#f7f7f7"
-      }
+      },
+      "package": "com.yusufarsln98.examreader"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "backgroundColor": "#f7f7f7"
+    "backgroundColor": "#f7f7f7",
+    "extra": {
+      "eas": {
+        "projectId": "b226b8ea-02fc-43a9-a0fe-6f9bc8394d8e"
+      }
+    }
   }
 }

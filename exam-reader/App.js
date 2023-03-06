@@ -96,11 +96,12 @@ export default function App() {
       <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
         <StatusBar style="auto" />
         <NavigationContainer>
-          {!userData ? (
+          {/* {!userData ? (
             <OnboardingScreen />
           ) : (
             <HomeScreen />
-          )}
+          )} */}
+          <HomeScreen />
         </NavigationContainer>
       </GestureHandlerRootView>
     </AppContext.Provider>

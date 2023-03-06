@@ -151,5 +151,6 @@ export default {
     save: 'Kaydet',
     select_class: 'Sınıf Seç',
     no_classes: 'Henüz sınıf eklenmemiş.',
+    class_name: 'Sınıf Adı',
   },
 };
