@@ -100,28 +100,28 @@ function EditExamScreen({ route, navigation }) {
       />
       <View style={[styles.inputItem]}>
         <Text style={[globalStyles.paragraph, { color: COLORS.softBlack, marginLeft: 8 }]}>
-          {TR.edit_exam.select_class}
+          {TR.edit_exam.class_name}
         </Text>
         <View key={randomKey}>
           {(classes.length > 0 || searchInput) ? (
             <>
               {!extendClassList ? (
-                <TouchableWithoutFeedback onPress={() => { setExtendClassList(!extendClassList) }}>
-                  <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    paddingHorizontal: 8,
-                    height: 48,
-                  }}>
-                    <Text style={[globalStyles.header3]}>
-                      {getClass(selectedClass)?.className}
-                    </Text>
-                    <TouchableOpacity>
+                // <TouchableWithoutFeedback onPress={() => { setExtendClassList(!extendClassList) }}>
+                <View style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingHorizontal: 8,
+                  height: 48,
+                }}>
+                  <Text style={[globalStyles.header3]}>
+                    {getClass(selectedClass)?.className}
+                  </Text>
+                  {/* <TouchableOpacity>
                       <IconChevronDown color={COLORS.primary} />
-                    </TouchableOpacity>
-                  </View>
-                </TouchableWithoutFeedback>
+                    </TouchableOpacity> */}
+                </View>
+                // </TouchableWithoutFeedback>
               ) : (
                 <View>
                   <View style={{
