@@ -12,7 +12,7 @@ import TR from './constants/TR';
 import { Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './screens/Home';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -26,17 +26,17 @@ export default function App() {
   const [userData, setUserData] = React.useState(null);
 
   React.useEffect(() => {
-    const getUserData = async () => {
-      try {
-        let jsonValue = await AsyncStorage.getItem('user');
-        return jsonValue != null ? JSON.parse(JSON.parse(jsonValue)) : null;
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    getUserData().then((user) => {
-      setUserData(user);
-    });
+    // const getUserData = async () => {
+    //   try {
+    //     let jsonValue = await AsyncStorage.getItem('user');
+    //     return jsonValue != null ? JSON.parse(JSON.parse(jsonValue)) : null;
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // }
+    // getUserData().then((user) => {
+    //   setUserData(user);
+    // });
   }, []);
 
   // -------------------- Fonts --------------------
@@ -64,19 +64,19 @@ export default function App() {
   // -------------------- Fonts end --------------------
 
   const storeUserData = async (user) => {
-    try {
-      await AsyncStorage.setItem('user', JSON.stringify(user));
-    } catch (e) {
-      console.log(e);
-    }
+    // try {
+    //   await AsyncStorage.setItem('user', JSON.stringify(user));
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }
 
   const logout = async () => {
-    try {
-      await AsyncStorage.removeItem('user');
-    } catch (e) {
-      console.log(e);
-    }
+    // try {
+    //   await AsyncStorage.removeItem('user');
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }
 
   const value = {
