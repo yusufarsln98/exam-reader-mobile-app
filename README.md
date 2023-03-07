@@ -7,6 +7,7 @@ In the future, we plan to integrate image processing and Firebase links, and off
 **A video clip from the application:** 
 ** **
 <img src="https://github.com/yusufarsln98/exam-reader-mobile-app/blob/main/exam-reader/assets/video-clip.gif" width="60%"/>
+
 ** **
 
 ### The Packages That I Use In The Program
