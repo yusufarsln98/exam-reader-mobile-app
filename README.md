@@ -6,7 +6,7 @@ In the future, we plan to integrate image processing and server connections, and
 
 **A video clip from the application:** 
 ** **
-<img src="https://github.com/yusufarsln98/exam-reader-mobile-app/blob/main/exam-reader/assets/video-clip.gif" height="30%"/>
+<img src="https://github.com/yusufarsln98/exam-reader-mobile-app/blob/main/exam-reader/assets/video-clip.gif"/>
 
 ** **
 
