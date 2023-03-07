@@ -29,3 +29,4 @@ Below are some packages that may be useful for future use:
 **[react-native-reanimated](https://www.npmjs.com/package/react-native-reanimated "react-native-reanimated"):** This library provides an API for both animations that come from different libraries and animations that we can create ourselves.
 
 **[react-native-svg](https://www.npmjs.com/package/react-native-svg "react-native-svg"):** This package is necessary because it enables the use of SVG images within React Native.
+
