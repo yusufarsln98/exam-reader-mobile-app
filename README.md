@@ -5,4 +5,5 @@ This is the mobile interface of an exam reader application written in React Nati
 In the future, we plan to integrate image processing and Firebase links, and offer the application once again with these additional features.
 
 **A video clip from the application:** 
-![This is an image](https://github.com/yusufarsln98/exam-reader-mobile-app/blob/main/exam-reader/assets/video-clip.gif)
+![]
+(https://github.com/yusufarsln98/exam-reader-mobile-app/blob/main/exam-reader/assets/video-clip.gif)
