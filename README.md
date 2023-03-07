@@ -14,7 +14,7 @@ In the future, we plan to integrate image processing and Firebase links, and off
 
 Below are some packages that may be useful for future use:
 
-**[react-navigation](https://reactnavigation.org/docs/getting-started/ "react-navigation"): ** When it comes to navigating between screens, there is one library that stands out as the most popular and useful. In this application, I used several navigation examples, including stack, bottom bar, and drawer navigation, all made possible thanks to this powerful library.
+**[react-navigation](https://reactnavigation.org/docs/getting-started/ "react-navigation"):** When it comes to navigating between screens, there is one library that stands out as the most popular and useful. In this application, I used several navigation examples, including stack, bottom bar, and drawer navigation, all made possible thanks to this powerful library.
 
 **[react-native-elements](https://reactnativeelements.com/docs "react-native-elements"):** In this package, we are provided with some components such as buttons and inputs, along with some useful features.
 
