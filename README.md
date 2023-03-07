@@ -2,7 +2,7 @@
 
 This is the mobile interface of an exam reader application written with React Native. While the screen interfaces are fully developed, the server connection is currently only available for the login and register pages.
 
-In the future, we plan to integrate image processing and Firebase connections, and offer the application once again with these additional features.
+In the future, we plan to integrate image processing and server connections, and offer the application once again with these additional features.
 
 **A video clip from the application:** 
 ** **
